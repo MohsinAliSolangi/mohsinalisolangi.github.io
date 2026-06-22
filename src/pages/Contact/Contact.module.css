@@ -1,0 +1,149 @@
+.section {
+  position: relative;
+  padding: 160px 64px;
+  background: #0a0a0a;
+  border-top: 1px solid #1a1a1a;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FF4500;
+  margin: 0 0 24px;
+}
+
+.eyebrow span {
+  width: 6px;
+  height: 6px;
+  background: #FF4500;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 69, 0, 0.7);
+}
+
+.title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 64px;
+  text-transform: uppercase;
+}
+
+.orange {
+  color: #FF4500;
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.desc {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #9a9a9a;
+  max-width: 420px;
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #1a1a1a;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 8px;
+  border-bottom: 1px solid #1a1a1a;
+  text-decoration: none;
+  color: inherit;
+  background: transparent;
+  transition: background 0.25s ease, padding-left 0.25s ease, border-color 0.25s ease;
+}
+
+.link:hover {
+  background: #111111;
+  padding-left: 20px;
+  border-color: #FF4500;
+}
+
+.linkLabel {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FF4500;
+  margin-bottom: 8px;
+}
+
+.linkValue {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.linkArrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 22px;
+  color: #555555;
+  transition: color 0.25s ease, transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.link:hover .linkArrow {
+  color: #FF4500;
+  transform: translate(4px, -4px);
+}
+
+.link:hover .linkValue {
+  color: #FF4500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .linkArrow,
+  .linkValue {
+    transition: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 96px 24px;
+  }
+
+  .wrap {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .desc {
+    max-width: none;
+  }
+
+  .linkValue {
+    font-size: 18px;
+  }
+
+  .link:hover {
+    padding-left: 8px;
+  }
+}

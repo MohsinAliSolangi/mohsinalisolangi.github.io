@@ -1,0 +1,143 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 2.5rem 5rem;
+  overflow: hidden;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.45;
+}
+
+.bgText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(7rem, 20vw, 20rem);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px #1c1c1c;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  letter-spacing: -0.05em;
+  user-select: none;
+}
+
+.statsRight {
+  position: absolute;
+  top: 50%;
+  right: 2.5rem;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  text-align: right;
+}
+
+.statItem {}
+
+.statVal {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.statVal span { color: #FF4800; }
+
+.statLabel {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #555;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #FF4800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3.2rem, 9vw, 8rem);
+  font-weight: 700;
+  line-height: 0.93;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.25rem;
+}
+
+.orange { color: #FF4800; }
+.thin { font-weight: 300; color: #666; }
+
+.sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  background: #FF4800;
+  color: #000;
+  font-weight: 700;
+  padding: 0.9rem 2.25rem;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+.btnPrimary:hover { opacity: 0.85; }
+
+.btnGhost {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: #888;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btnGhost:hover { color: #fff; border-color: #fff; }
+
+@media (max-width: 768px) {
+  .hero { padding: 0 1.25rem 4rem; }
+  .statsRight { display: none; }
+  .bgText { font-size: 5rem; }
+}

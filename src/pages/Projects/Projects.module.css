@@ -1,0 +1,107 @@
+.section {
+  padding: 5rem 2.5rem;
+  border-top: 1px solid #1e1e1e;
+}
+
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #FF4800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow span { display: inline-block; width: 20px; height: 1px; background: #FF4800; }
+
+.title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.orange { color: #FF4800; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #1e1e1e;
+  margin-top: 3rem;
+}
+
+.card {
+  background: #0f0f0f;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  transition: background 0.2s;
+}
+.card:hover { background: #141414; }
+.card:hover .arrow { color: #FF4800; }
+
+.cardLabel {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #FF4800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.cardTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+.cardDesc {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.75;
+  flex: 1;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.chip {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #555;
+  border: 1px solid #2a2a2a;
+  padding: 0.2rem 0.6rem;
+  letter-spacing: 0.08em;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #1e1e1e;
+  margin-top: auto;
+}
+.result {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: #FF4800;
+  font-weight: 700;
+}
+.arrow {
+  font-size: 18px;
+  color: #444;
+  transition: color 0.2s;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .section { padding: 4rem 1.25rem; }
+  .grid { grid-template-columns: 1fr; }
+}
