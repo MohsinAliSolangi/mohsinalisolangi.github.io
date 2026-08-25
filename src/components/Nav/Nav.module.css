@@ -17,6 +17,9 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: 'Space Mono', monospace;
   font-size: 13px;
   font-weight: 700;
@@ -25,6 +28,13 @@
   text-decoration: none;
 }
 .logo span { color: #FF4800; }
+
+.logoGlyph {
+  width: 22px;
+  height: 22px;
+  color: #FF4800;
+  flex-shrink: 0;
+}
 
 .links {
   display: flex;

@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import NetworkGlyph from '../NetworkGlyph/NetworkGlyph'
+import { scrollTo as smoothScrollTo } from '../../lib/lenis'
 import styles from './Nav.module.css'
 
 const links = ['About', 'Stack', 'Services', 'Projects', 'Contact']
@@ -13,21 +15,22 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const scrollTo = (id) => {
+  const goTo = (id) => {
     setMenuOpen(false)
-    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })
+    smoothScrollTo(`#${id.toLowerCase()}`)
   }
 
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-      <a href="#" className={styles.logo} onClick={e => { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}) }}>
+      <a href="#" className={styles.logo} onClick={e => { e.preventDefault(); smoothScrollTo(0) }}>
+        <NetworkGlyph className={styles.logoGlyph} />
         M<span>.</span>SOLANGI
       </a>
 
       <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
         {links.map(l => (
           <li key={l}>
-            <button onClick={() => scrollTo(l)} className={styles.link}>{l}</button>
+            <button onClick={() => goTo(l)} className={styles.link}>{l}</button>
           </li>
         ))}
       </ul>

@@ -1,4 +1,4 @@
-import useReveal from '../useReveal'
+import useSectionAnimation from '../../lib/useSectionAnimation'
 import styles from './About.module.css'
 
 const TAGS = [
@@ -14,18 +14,14 @@ const METRICS = [
 ]
 
 export default function About() {
-  const ref = useReveal()
+  const ref = useSectionAnimation({ itemsSelector: `.${styles.body} p, .${styles.tag}, .${styles.metricBox}` })
   return (
-    <section className={styles.section} id="about">
+    <section className={styles.section} id="about" ref={ref}>
       <p className={styles.eyebrow}><span /> Who I Am</p>
       <h2 className={styles.title}>
         BLOCKCHAIN IS<br /><span className={styles.orange}>MY DOMAIN</span>
       </h2>
-      <div
-        className={styles.grid}
-        ref={ref}
-        style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.6s ease, transform 0.6s ease' }}
-      >
+      <div className={styles.grid}>
         <div>
           <div className={styles.body}>
             <p>Blockchain Engineer and Full-Stack Web3 Developer with 3+ years shipping production-grade decentralised systems. Currently CTO at Chainmint while actively freelancing on Upwork and Freelancer.com.</p>

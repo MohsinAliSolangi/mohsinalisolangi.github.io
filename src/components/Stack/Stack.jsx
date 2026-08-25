@@ -1,4 +1,4 @@
-import useReveal from '../../pages/useReveal'
+import useSectionAnimation from '../../lib/useSectionAnimation'
 import styles from './Stack.module.css'
 
 const CARDS = [
@@ -11,18 +11,14 @@ const CARDS = [
 ]
 
 export default function Stack() {
-  const ref = useReveal()
+  const ref = useSectionAnimation({ itemsSelector: `.${styles.card}` })
   return (
-    <section className={styles.section} id="stack">
+    <section className={styles.section} id="stack" ref={ref}>
       <p className={styles.eyebrow}><span /> Technical Stack</p>
       <h2 className={styles.title}>
         TOOLS I USE<br /><span className={styles.orange}>TO SHIP</span>
       </h2>
-      <div
-        className={styles.grid}
-        ref={ref}
-        style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.6s ease, transform 0.6s ease' }}
-      >
+      <div className={styles.grid}>
         {CARDS.map(c => (
           <div key={c.name} className={styles.card}>
             <div className={styles.cardLabel}>{c.label}</div>

@@ -1,4 +1,4 @@
-import useReveal from '../useReveal'
+import useSectionAnimation from '../../lib/useSectionAnimation'
 import styles from './Contact.module.css'
 
 const LINKS = [
@@ -10,18 +10,14 @@ const LINKS = [
 ]
 
 export default function Contact() {
-  const ref = useReveal()
+  const ref = useSectionAnimation({ itemsSelector: `.${styles.link}`, y: 24, stagger: 0.07 })
   return (
-    <section className={styles.section} id="contact">
+    <section className={styles.section} id="contact" ref={ref}>
       <p className={styles.eyebrow}><span /> Get In Touch</p>
       <h2 className={styles.title}>
         LET'S BUILD<br /><span className={styles.orange}>SOMETHING</span>
       </h2>
-      <div
-        className={styles.wrap}
-        ref={ref}
-        style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.6s ease, transform 0.6s ease' }}
-      >
+      <div className={styles.wrap}>
         <p className={styles.desc}>
           Have a token launch, DeFi protocol, NFT project, or full-stack dApp you need shipped? I work with founders, protocols, and agencies. Direct communication, no middlemen, zero security incidents.
         </p>

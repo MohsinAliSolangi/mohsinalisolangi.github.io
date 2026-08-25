@@ -1,4 +1,4 @@
-import useReveal from '../useReveal'
+import useSectionAnimation from '../../lib/useSectionAnimation'
 import styles from './Projects.module.css'
 
 const shot = (url) => `https://s0.wp.com/mshots/v1/${encodeURIComponent(url)}?w=800`
@@ -103,18 +103,14 @@ const PROJECTS = [
 ]
 
 export default function Projects() {
-  const ref = useReveal()
+  const ref = useSectionAnimation({ itemsSelector: `.${styles.card}`, y: 30, stagger: 0.06 })
   return (
-    <section className={styles.section} id="projects">
+    <section className={styles.section} id="projects" ref={ref}>
       <p className={styles.eyebrow}><span /> Featured Work</p>
       <h2 className={styles.title}>
         PROJECTS I'VE<br /><span className={styles.orange}>SHIPPED</span>
       </h2>
-      <div
-        className={styles.grid}
-        ref={ref}
-        style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.6s ease, transform 0.6s ease' }}
-      >
+      <div className={styles.grid}>
         {PROJECTS.map(p => (
           <a
             key={p.title}

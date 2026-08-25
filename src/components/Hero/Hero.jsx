@@ -1,90 +1,67 @@
-import { useEffect, useRef } from 'react'
+import { Suspense, lazy, useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { scrollTo as smoothScrollTo } from '../../lib/lenis'
 import styles from './Hero.module.css'
 
+gsap.registerPlugin(ScrollTrigger)
+
+const ThreeBackground = lazy(() => import('../ThreeBackground/ThreeBackground'))
+
+const KEYWORDS = [
+  { w: 'SOLIDITY', top: '10%', left: '44%' },
+  { w: 'RUST', top: '18%', left: '64%' },
+  { w: 'ZERO EXPLOITS', top: '27%', left: '38%' },
+  { w: 'EVM', top: '36%', left: '68%' },
+  { w: 'MAINNET', top: '46%', left: '48%' },
+  { w: 'SOLANA', top: '56%', left: '32%' },
+  { w: '$1M+ RAISED', top: '64%', left: '62%' },
+  { w: 'DEFI', top: '73%', left: '42%' },
+  { w: 'ANCHOR', top: '13%', left: '28%' },
+  { w: 'AUDIT-READY', top: '82%', left: '58%' },
+]
+
 export default function Hero() {
-  const canvasRef = useRef(null)
+  const wordsRef = useRef([])
+  const heroRef = useRef(null)
+  const bgTextRef = useRef(null)
+  const wordCloudRef = useRef(null)
+  const canvasWrapRef = useRef(null)
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    let W, H, dots = [], animId, t = 0
+    gsap.fromTo(
+      wordsRef.current,
+      { yPercent: 130, opacity: 0 },
+      { yPercent: 0, opacity: 1, duration: 1.1, ease: 'power4.out', stagger: 0.12, delay: 0.15 }
+    )
 
-    const resize = () => {
-      W = canvas.width = canvas.offsetWidth
-      H = canvas.height = canvas.offsetHeight
-      dots = Array.from({ length: 65 }, () => ({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.8 + 0.4,
-      }))
-    }
+    const ctx = gsap.context(() => {
+      const scrollOpts = { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: true }
+      gsap.to(bgTextRef.current, { y: 140, ease: 'none', scrollTrigger: scrollOpts })
+      gsap.to(wordCloudRef.current, { y: -90, opacity: 0.3, ease: 'none', scrollTrigger: scrollOpts })
+      gsap.to(canvasWrapRef.current, { opacity: 0.15, ease: 'none', scrollTrigger: scrollOpts })
+    }, heroRef)
 
-    const draw = () => {
-      ctx.clearRect(0, 0, W, H)
-      t += 0.004
-
-      // Grid
-      ctx.strokeStyle = 'rgba(255,72,0,0.055)'
-      ctx.lineWidth = 0.5
-      const gs = 64
-      for (let x = 0; x < W; x += gs) {
-        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke()
-      }
-      for (let y = 0; y < H; y += gs) {
-        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke()
-      }
-
-      // Dots + connections
-      dots.forEach(d => {
-        d.x += d.vx; d.y += d.vy
-        if (d.x < 0 || d.x > W) d.vx *= -1
-        if (d.y < 0 || d.y > H) d.vy *= -1
-        ctx.beginPath()
-        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(255,72,0,0.6)'
-        ctx.fill()
-      })
-
-      dots.forEach((a, i) => {
-        for (let j = i + 1; j < dots.length; j++) {
-          const b = dots[j]
-          const dx = a.x - b.x, dy = a.y - b.y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 130) {
-            ctx.beginPath()
-            ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y)
-            ctx.strokeStyle = `rgba(255,72,0,${0.13 * (1 - dist / 130)})`
-            ctx.lineWidth = 0.5
-            ctx.stroke()
-          }
-        }
-      })
-
-      // Scan line
-      const scanY = (Math.sin(t) * 0.5 + 0.5) * H
-      const grad = ctx.createLinearGradient(0, scanY - 24, 0, scanY + 24)
-      grad.addColorStop(0, 'rgba(255,72,0,0)')
-      grad.addColorStop(0.5, 'rgba(255,72,0,0.07)')
-      grad.addColorStop(1, 'rgba(255,72,0,0)')
-      ctx.fillStyle = grad
-      ctx.fillRect(0, scanY - 24, W, 48)
-
-      animId = requestAnimationFrame(draw)
-    }
-
-    resize()
-    draw()
-    window.addEventListener('resize', resize)
-    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize) }
+    return () => ctx.revert()
   }, [])
 
   return (
-    <section className={styles.hero} id="hero">
-      <canvas ref={canvasRef} className={styles.canvas} />
-      <div className={styles.bgText} aria-hidden>WEB3</div>
+    <section ref={heroRef} className={styles.hero} id="hero">
+      <div ref={canvasWrapRef} className={styles.canvasWrap}>
+        <Suspense fallback={null}>
+          <ThreeBackground className={styles.canvas} />
+        </Suspense>
+      </div>
+      <div className={styles.scanline} aria-hidden />
+      <div ref={bgTextRef} className={styles.bgText} aria-hidden>WEB3</div>
+
+      <div ref={wordCloudRef} className={styles.wordCloud} aria-hidden>
+        {KEYWORDS.map((k) => (
+          <span key={k.w} className={styles.floatWord} style={{ top: k.top, left: k.left }}>
+            {k.w}
+          </span>
+        ))}
+      </div>
 
       <div className={styles.statsRight}>
         {[
@@ -102,9 +79,15 @@ export default function Hero() {
       <div className={styles.content}>
         <p className={styles.eyebrow}>Blockchain Engineer · CTO at Chainmint · Karachi, PK</p>
         <h1 className={styles.title}>
-          MOHSIN<br />
-          <span className={styles.orange}>ALI</span><br />
-          <span className={styles.thin}>SOLANGI</span>
+          <span className={styles.wordMask}>
+            <span ref={el => (wordsRef.current[0] = el)} className={styles.kineticWord}>MOHSIN</span>
+          </span><br />
+          <span className={styles.wordMask}>
+            <span ref={el => (wordsRef.current[1] = el)} className={`${styles.kineticWord} ${styles.orange}`}>ALI</span>
+          </span><br />
+          <span className={styles.wordMask}>
+            <span ref={el => (wordsRef.current[2] = el)} className={`${styles.kineticWord} ${styles.thin}`}>SOLANGI</span>
+          </span>
         </h1>
         <p className={styles.sub}>
           Solidity · Rust · Solana · EVM<br />
@@ -112,11 +95,11 @@ export default function Hero() {
         </p>
         <div className={styles.actions}>
           <a href="#projects" className={styles.btnPrimary}
-            onClick={e => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) }}>
+            onClick={e => { e.preventDefault(); smoothScrollTo('#projects') }}>
             View My Work
           </a>
           <a href="#contact" className={styles.btnGhost}
-            onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
+            onClick={e => { e.preventDefault(); smoothScrollTo('#contact') }}>
             Let's Build →
           </a>
         </div>

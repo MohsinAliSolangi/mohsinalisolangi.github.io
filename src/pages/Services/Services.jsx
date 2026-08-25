@@ -1,4 +1,4 @@
-import useReveal from '../useReveal'
+import useSectionAnimation from '../../lib/useSectionAnimation'
 import styles from './Services.module.css'
 
 const SERVICES = [
@@ -11,18 +11,14 @@ const SERVICES = [
 ]
 
 export default function Services() {
-  const ref = useReveal()
+  const ref = useSectionAnimation({ itemsSelector: `.${styles.row}`, y: 30, stagger: 0.06 })
   return (
-    <section className={styles.section} id="services">
+    <section className={styles.section} id="services" ref={ref}>
       <p className={styles.eyebrow}><span /> What I Build</p>
       <h2 className={styles.title}>
         SERVICES<br /><span className={styles.orange}>I DELIVER</span>
       </h2>
-      <div
-        className={styles.list}
-        ref={ref}
-        style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.6s ease, transform 0.6s ease' }}
-      >
+      <div className={styles.list}>
         {SERVICES.map(s => (
           <div key={s.num} className={styles.row}>
             <div className={styles.num}>{s.num}</div>
