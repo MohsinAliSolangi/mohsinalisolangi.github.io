@@ -5,8 +5,8 @@ const LINKS = [
   { label: 'Email', value: 'mohsinali.solangi789@gmail.com', href: 'mailto:mohsinali.solangi789@gmail.com' },
   { label: 'LinkedIn', value: 'linkedin.com/in/mohsinalisolangi', href: 'https://www.linkedin.com/in/mohsinalisolangi' },
   { label: 'GitHub', value: 'github.com/MohsinAliSolangi', href: 'https://github.com/MohsinAliSolangi' },
-  { label: 'Upwork', value: 'Available for Freelance Projects', href: 'https://www.upwork.com' },
-  { label: 'Freelancer', value: 'Available for Freelance Projects', href: 'https://www.freelancer.com' },
+  { label: 'Upwork', value: 'Available for Freelance Projects', href: 'https://www.upwork.com/freelancers/~011ce6368cb2570ed4' },
+  { label: 'Freelancer', value: 'Available for Freelance Projects', href: 'https://www.freelancer.com/u/Mohsinalisolang2' },
 ]
 
 export default function Contact() {
