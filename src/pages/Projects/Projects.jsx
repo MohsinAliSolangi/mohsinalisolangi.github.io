@@ -1,7 +1,20 @@
+import { useState } from 'react'
 import useSectionAnimation from '../../lib/useSectionAnimation'
+import TechIcon from '../../components/TechIcon/TechIcon'
 import styles from './Projects.module.css'
 
 const shot = (url) => `https://s0.wp.com/mshots/v1/${encodeURIComponent(url)}?w=800`
+
+const iconFor = (label) => ({
+  React: 'react',
+  'React.js': 'react',
+  'Node.js': 'node',
+  Solidity: 'solidity',
+  EVM: 'ethereum',
+  'ERC-20': 'ethereum',
+  'Web3.js': 'network',
+  'DAO Tooling': 'network',
+}[label] || label.toLowerCase())
 
 const PROJECTS = [
   {
@@ -103,15 +116,20 @@ const PROJECTS = [
 ]
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false)
   const ref = useSectionAnimation({ itemsSelector: `.${styles.card}`, y: 30, stagger: 0.06 })
+  const visibleProjects = showAll ? PROJECTS : PROJECTS.slice(0, 6)
   return (
     <section className={styles.section} id="projects" ref={ref}>
-      <p className={styles.eyebrow}><span /> Featured Work</p>
-      <h2 className={styles.title}>
-        PROJECTS I'VE<br /><span className={styles.orange}>SHIPPED</span>
-      </h2>
+      <div className={styles.headingRow}>
+        <div>
+          <p className={styles.eyebrow}><span /> Selected proof / 04</p>
+          <h2 className={styles.title}>BUILT, SHIPPED,<br /><span className={styles.muted}>LIVE ON THE WEB.</span></h2>
+        </div>
+        <p className={styles.intro}>A selection of token, DeFi, DAO, staking, trading, and Web3 product work. Open any build to explore it live.</p>
+      </div>
       <div className={styles.grid}>
-        {PROJECTS.map(p => (
+        {visibleProjects.map((p, index) => (
           <a
             key={p.title}
             className={styles.card}
@@ -121,6 +139,7 @@ export default function Projects() {
             aria-label={`View live project: ${p.title}`}
           >
             <div className={styles.preview}>
+              <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>
               <img
                 src={shot(p.url)}
                 alt={`Screenshot preview of ${p.title}`}
@@ -134,7 +153,12 @@ export default function Projects() {
               <div className={styles.cardTitle}>{p.title}</div>
               <div className={styles.cardDesc}>{p.desc}</div>
               <div className={styles.chips}>
-                {p.stack.map(s => <span key={s} className={styles.chip}>{s}</span>)}
+                {p.stack.map(s => (
+                  <span key={s} className={styles.chip}>
+                    <TechIcon name={iconFor(s)} label={s} />
+                    {s}
+                  </span>
+                ))}
               </div>
               <div className={styles.footer}>
                 <span className={styles.result}>{p.result}</span>
@@ -144,6 +168,9 @@ export default function Projects() {
           </a>
         ))}
       </div>
+      <button type="button" className={styles.showMore} onClick={() => setShowAll(value => !value)}>
+        {showAll ? 'Show selected work' : `View all ${PROJECTS.length} projects`} <span>{showAll ? '↑' : '↓'}</span>
+      </button>
     </section>
   )
 }

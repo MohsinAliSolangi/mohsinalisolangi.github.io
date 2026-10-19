@@ -15,7 +15,7 @@ export default function NetworkGlyph({ className, glow = false }) {
       viewBox="0 0 200 200"
       className={className}
       role="img"
-      aria-label="Network glyph"
+      aria-label="Decentralized network mark"
       fill="none"
     >
       {glow && (

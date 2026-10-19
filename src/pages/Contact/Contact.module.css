@@ -1,149 +1,22 @@
-.section {
-  position: relative;
-  padding: 160px 64px;
-  background: #0a0a0a;
-  border-top: 1px solid #1a1a1a;
+.section { position: relative; padding: clamp(5rem, 10vw, 9rem) 2.5rem; border-bottom: 1px solid var(--border); background: #080808; }
+.eyebrow { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem; color: var(--muted); font: 9px var(--font-mono); letter-spacing: .17em; text-transform: uppercase; }.eyebrow > span { width: 22px; height: 1px; background: var(--silver); }
+.title { font: 550 clamp(2.7rem, 7vw, 7rem)/.92 var(--font-display); letter-spacing: -.065em; }.muted { color: var(--muted); font-weight: 400; }
+.wrap { display: grid; grid-template-columns: minmax(280px, 620px) auto; align-items: end; justify-content: space-between; gap: 4rem; margin: 3rem 0 4rem; }.desc { color: #adada9; font-size: 16px; line-height: 1.75; }
+.openContact, .emailCta { display: inline-flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 50px; padding: .9rem 1.2rem; border: 1px solid var(--white); background: var(--white); color: var(--ink); cursor: pointer; font: 600 9px var(--font-mono); letter-spacing: .1em; text-decoration: none; text-transform: uppercase; transition: .2s; white-space: nowrap; }.openContact:hover, .emailCta:hover { background: transparent; color: var(--white); }
+.links { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--border); }.link { display: grid; min-width: 0; grid-template-columns: auto 1fr auto; align-items: center; gap: .7rem; padding: 1.25rem .8rem 1.25rem 0; border-bottom: 1px solid var(--border); color: inherit; text-decoration: none; }.link + .link { padding-left: .8rem; border-left: 1px solid var(--border); }.link:hover .linkValue, .link:hover .linkArrow { color: var(--white); }.link:hover .linkIcon { border-color: var(--white); color: var(--white); }
+.linkIcon { display: grid; width: 32px; height: 32px; flex: 0 0 auto; place-items: center; border: 1px solid var(--border); border-radius: 50%; color: var(--muted); transition: .2s; }.linkIcon svg { width: 14px; height: 14px; }
+.linkLabel { display: block; margin-bottom: .35rem; color: var(--dim); font: 8px var(--font-mono); letter-spacing: .13em; text-transform: uppercase; }.linkValue { display: block; overflow-wrap: anywhere; color: var(--muted); font-size: 11px; transition: .2s; }.linkArrow { color: var(--dim); transition: .2s; }
+.walletButton { position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 90; width: 68px; height: 68px; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; filter: drop-shadow(0 12px 24px rgba(0,0,0,.55)); transition: transform .25s; }.walletButton:hover { transform: translateY(-5px) scale(1.04); }
+.coin { display: inline-grid; width: 68px; height: 68px; place-items: center; border-radius: 50%; animation: coinTurn 8s linear infinite; transform-style: preserve-3d; }.coin:hover, .walletButton:hover .coin { animation-play-state: paused; }.coinLogo { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; filter: drop-shadow(0 8px 16px rgba(0,0,0,.48)); }
+.coinLarge { width: 116px; height: 116px; margin-bottom: 1.5rem; animation-duration: 11s; }
+@keyframes coinTurn {
+  0%, 100% { transform: rotateY(1deg) rotateZ(-360deg); }
+  50% { transform: rotateY(1deg) rotateZ(360deg); }
 }
-
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Space Mono', monospace;
-  font-size: 13px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #FF4500;
-  margin: 0 0 24px;
-}
-
-.eyebrow span {
-  width: 6px;
-  height: 6px;
-  background: #FF4500;
-  border-radius: 50%;
-  box-shadow: 0 0 8px rgba(255, 69, 0, 0.7);
-}
-
-.title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: clamp(40px, 6vw, 88px);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  margin: 0 0 64px;
-  text-transform: uppercase;
-}
-
-.orange {
-  color: #FF4500;
-}
-
-.wrap {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.desc {
-  font-family: 'Space Mono', monospace;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #9a9a9a;
-  max-width: 420px;
-  margin: 0;
-}
-
-.links {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid #1a1a1a;
-}
-
-.link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 28px 8px;
-  border-bottom: 1px solid #1a1a1a;
-  text-decoration: none;
-  color: inherit;
-  background: transparent;
-  transition: background 0.25s ease, padding-left 0.25s ease, border-color 0.25s ease;
-}
-
-.link:hover {
-  background: #111111;
-  padding-left: 20px;
-  border-color: #FF4500;
-}
-
-.linkLabel {
-  display: block;
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #FF4500;
-  margin-bottom: 8px;
-}
-
-.linkValue {
-  display: block;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 500;
-  font-size: 22px;
-  color: #ffffff;
-  letter-spacing: -0.01em;
-}
-
-.linkArrow {
-  font-family: 'Space Mono', monospace;
-  font-size: 22px;
-  color: #555555;
-  transition: color 0.25s ease, transform 0.25s ease;
-  flex-shrink: 0;
-}
-
-.link:hover .linkArrow {
-  color: #FF4500;
-  transform: translate(4px, -4px);
-}
-
-.link:hover .linkValue {
-  color: #FF4500;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .link,
-  .linkArrow,
-  .linkValue {
-    transition: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .section {
-    padding: 96px 24px;
-  }
-
-  .wrap {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .desc {
-    max-width: none;
-  }
-
-  .linkValue {
-    font-size: 18px;
-  }
-
-  .link:hover {
-    padding-left: 8px;
-  }
-}
+.modalBackdrop { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 1.25rem; background: rgba(0,0,0,.82); backdrop-filter: blur(18px); }
+.modal { position: relative; width: min(100%, 560px); padding: clamp(2rem, 6vw, 3.5rem); border: 1px solid var(--border-strong); background: #0d0d0e; box-shadow: 0 30px 120px rgba(0,0,0,.75); animation: modalIn .25s ease-out both; }.modal::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 10% 0%, rgba(255,255,255,.1), transparent 35%); }
+@keyframes modalIn { from { opacity: 0; transform: translateY(16px) scale(.98); } }
+.closeButton { position: absolute; top: 1rem; right: 1rem; z-index: 2; width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 50%; background: transparent; color: var(--silver); cursor: pointer; font-size: 22px; }.closeButton:hover { border-color: var(--white); color: var(--white); }
+.modalEyebrow { color: var(--muted); font: 9px var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }.modalTitle { margin-top: .7rem; color: var(--white); font: 550 clamp(2rem, 6vw, 3rem)/1 var(--font-display); letter-spacing: -.045em; }.modalCopy { margin: 1.2rem 0 1.7rem; color: var(--muted); font-size: 14px; line-height: 1.7; }.emailCta { width: 100%; }.modalLinks { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; margin-top: 1.5rem; }.modalLinks a { display: inline-flex; align-items: center; gap: .35rem; color: var(--muted); font: 9px var(--font-mono); letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }.modalLinks a svg { width: 13px; height: 13px; }.modalLinks a span { margin-left: .1rem; }.modalLinks a:hover { color: var(--white); }
+@media (max-width: 900px) { .links { grid-template-columns: 1fr 1fr; }.link + .link { padding-left: 0; border-left: 0; }.link:nth-child(even) { padding-left: .8rem; border-left: 1px solid var(--border); } }
+@media (max-width: 650px) { .section { padding: 5rem 1.25rem 6.5rem; }.wrap { grid-template-columns: 1fr; gap: 1.5rem; margin: 2rem 0 3rem; }.openContact { width: 100%; }.links { grid-template-columns: 1fr; }.link:nth-child(even) { padding-left: 0; border-left: 0; }.walletButton { right: 1rem; bottom: 1rem; width: 60px; height: 60px; }.coin { width: 56px; height: 56px; }.coinLarge { width: 90px; height: 90px; } }

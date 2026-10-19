@@ -16,18 +16,18 @@ export default function ThreeBackground({ className }) {
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true })
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-    // Blockchain-style node network: icosahedron wireframe + glowing vertex points
+    // Restrained chrome network: depth without the usual neon Web3 aesthetic.
     const icosGeo = new THREE.IcosahedronGeometry(2.3, 2)
     const wireGeo = new THREE.WireframeGeometry(icosGeo)
-    const wireMat = new THREE.LineBasicMaterial({ color: 0xff4800, transparent: true, opacity: 0.28 })
+    const wireMat = new THREE.LineBasicMaterial({ color: 0xd8d8d8, transparent: true, opacity: 0.18 })
     const wireframe = new THREE.LineSegments(wireGeo, wireMat)
     scene.add(wireframe)
 
     const nodeMat = new THREE.PointsMaterial({
-      color: 0xff4800,
+      color: 0xffffff,
       size: 0.06,
       transparent: true,
-      opacity: 0.95,
+      opacity: 0.72,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     })

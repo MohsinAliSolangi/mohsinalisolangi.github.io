@@ -2,21 +2,21 @@ import useSectionAnimation from '../../lib/useSectionAnimation'
 import styles from './Services.module.css'
 
 const SERVICES = [
-  { num: '01', name: 'Smart Contract Development', desc: 'Custom ERC-20, ERC-721, ERC-1155 tokens. Staking, vesting, governance, multisig. Audit-ready Solidity with OpenZeppelin standards and zero security incidents on record.', tag: 'Solidity · EVM' },
-  { num: '02', name: 'ICO / IDO Launch Platforms', desc: 'Full presale platforms with whitelist, tiered pricing, vesting schedules, and referral systems. End-to-end from smart contract to frontend. $1M+ raised for clients.', tag: 'Token Launch' },
-  { num: '03', name: 'DeFi Protocol Development', desc: 'AMMs, liquidity pools, yield farming, staking vaults, flash loans. Secure, gas-optimised, production-grade DeFi for protocols that need to perform at scale.', tag: 'DeFi · Liquidity' },
-  { num: '04', name: 'Solana Programs', desc: 'Native Rust programs and Anchor-based protocols for Solana. SPL tokens, NFT programs, on-chain bots, and CPI integrations for Solana mainnet.', tag: 'Rust · Anchor' },
-  { num: '05', name: 'NFT Marketplace & Collections', desc: 'ERC-721 / ERC-1155 collections, minting sites, royalty logic, marketplace contracts, Dutch auction, and reveal mechanics at scale.', tag: 'NFT · Web3 UI' },
-  { num: '06', name: 'Full-Stack dApp Development', desc: 'End-to-end Web3 applications. React.js frontend, Node.js backend, smart contract integration, wallet connect, and AWS KMS key management.', tag: 'React · Node' },
+  { num: '01', name: 'Smart contract development', desc: 'Custom contracts for tokens, staking, vesting, governance, and protocol logic — designed around your use case, with security considered from day one.', tag: 'Solidity · EVM' },
+  { num: '02', name: 'Web3 product & dApp development', desc: 'A complete user-facing product: wallet connection, on-chain interactions, responsive interface, and the supporting app logic.', tag: 'dApps · Product' },
+  { num: '03', name: 'DeFi & token launch solutions', desc: 'Build the mechanics behind your launch or protocol, from presale and token utility to staking and other DeFi features.', tag: 'DeFi · Token launch' },
+  { num: '04', name: 'Solana program development', desc: 'On-chain programs for Solana using Rust and Anchor, shaped to fit your product requirements and user experience.', tag: 'Rust · Anchor' },
+  { num: '05', name: 'Web3 solution design', desc: 'Turn a rough idea into a clear technical plan. I help define scope, map the architecture, and choose a practical path to launch.', tag: 'Architecture · Planning' },
+  { num: '06', name: 'Security-minded engineering', desc: 'Think through trust boundaries, permissions, and common contract risks early — before they become expensive product problems.', tag: 'Security · Review' },
 ]
 
 export default function Services() {
   const ref = useSectionAnimation({ itemsSelector: `.${styles.row}`, y: 30, stagger: 0.06 })
   return (
     <section className={styles.section} id="services" ref={ref}>
-      <p className={styles.eyebrow}><span /> What I Build</p>
+      <p className={styles.eyebrow}><span /> Ways we can work together / 03</p>
       <h2 className={styles.title}>
-        SERVICES<br /><span className={styles.orange}>I DELIVER</span>
+        FROM UNCLEAR IDEA<br /><span className={styles.muted}>TO WORKING PRODUCT.</span>
       </h2>
       <div className={styles.list}>
         {SERVICES.map(s => (

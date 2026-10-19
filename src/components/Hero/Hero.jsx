@@ -1,108 +1,117 @@
-import { Suspense, lazy, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import portrait from '../../assets/mohsin-portrait.jpg'
 import { scrollTo as smoothScrollTo } from '../../lib/lenis'
+import SocialIcon from '../SocialIcon/SocialIcon'
 import styles from './Hero.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const ThreeBackground = lazy(() => import('../ThreeBackground/ThreeBackground'))
+const EXPERTISE = ['Smart contracts', 'DeFi systems', 'Solana programs', 'Security thinking']
+const DOTS = Array.from({ length: 108 }, (_, index) => ({
+  x: (((index * 47) % 19) - 9) * 14,
+  y: (((index * 31) % 17) - 8) * 13,
+}))
 
-const KEYWORDS = [
-  { w: 'SOLIDITY', top: '10%', left: '44%' },
-  { w: 'RUST', top: '18%', left: '64%' },
-  { w: 'ZERO EXPLOITS', top: '27%', left: '38%' },
-  { w: 'EVM', top: '36%', left: '68%' },
-  { w: 'MAINNET', top: '46%', left: '48%' },
-  { w: 'SOLANA', top: '56%', left: '32%' },
-  { w: '$1M+ RAISED', top: '64%', left: '62%' },
-  { w: 'DEFI', top: '73%', left: '42%' },
-  { w: 'ANCHOR', top: '13%', left: '28%' },
-  { w: 'AUDIT-READY', top: '82%', left: '58%' },
+const SOCIALS = [
+  { name: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/mohsinalisolangi' },
+  { name: 'upwork', label: 'Upwork', href: 'https://www.upwork.com/freelancers/~011ce6368cb2570ed4' },
+  { name: 'github', label: 'GitHub', href: 'https://github.com/MohsinAliSolangi' },
+  { name: 'freelancer', label: 'Freelancer', href: 'https://www.freelancer.com/u/Mohsinalisolang2' },
+  { name: 'email', label: 'Email', href: 'mailto:mohsinali.solangi789@gmail.com' },
 ]
 
 export default function Hero() {
-  const wordsRef = useRef([])
   const heroRef = useRef(null)
-  const bgTextRef = useRef(null)
-  const wordCloudRef = useRef(null)
-  const canvasWrapRef = useRef(null)
+  const revealRef = useRef([])
+  const portraitRef = useRef(null)
+  const dotsRef = useRef([])
 
   useEffect(() => {
-    gsap.fromTo(
-      wordsRef.current,
-      { yPercent: 130, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 1.1, ease: 'power4.out', stagger: 0.12, delay: 0.15 }
-    )
-
     const ctx = gsap.context(() => {
-      const scrollOpts = { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: true }
-      gsap.to(bgTextRef.current, { y: 140, ease: 'none', scrollTrigger: scrollOpts })
-      gsap.to(wordCloudRef.current, { y: -90, opacity: 0.3, ease: 'none', scrollTrigger: scrollOpts })
-      gsap.to(canvasWrapRef.current, { opacity: 0.15, ease: 'none', scrollTrigger: scrollOpts })
-    }, heroRef)
+      gsap.fromTo(
+        revealRef.current,
+        { yPercent: 110, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 1.05, ease: 'power4.out', stagger: 0.1, delay: 0.15 }
+      )
 
+      gsap.fromTo(portraitRef.current, { opacity: 0, scale: 0.9, x: 35 }, {
+        opacity: 1, scale: 1, x: 0, duration: 1.2, delay: 0.25, ease: 'power3.out',
+      })
+
+      gsap.to(portraitRef.current, {
+        y: 70,
+        scale: 0.96,
+        ease: 'none',
+        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: true },
+      })
+
+      gsap.to(dotsRef.current, {
+        x: index => DOTS[index].x,
+        y: index => DOTS[index].y,
+        scale: index => 0.15 + (index % 3) * 0.08,
+        opacity: 0,
+        ease: 'power2.in',
+        stagger: { each: 0.002, from: 'center' },
+        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: '65% top', scrub: 0.45 },
+      })
+    }, heroRef)
     return () => ctx.revert()
   }, [])
 
   return (
     <section ref={heroRef} className={styles.hero} id="hero">
-      <div ref={canvasWrapRef} className={styles.canvasWrap}>
-        <Suspense fallback={null}>
-          <ThreeBackground className={styles.canvas} />
-        </Suspense>
-      </div>
-      <div className={styles.scanline} aria-hidden />
-      <div ref={bgTextRef} className={styles.bgText} aria-hidden>WEB3</div>
-
-      <div ref={wordCloudRef} className={styles.wordCloud} aria-hidden>
-        {KEYWORDS.map((k) => (
-          <span key={k.w} className={styles.floatWord} style={{ top: k.top, left: k.left }}>
-            {k.w}
-          </span>
-        ))}
+      <div className={styles.portraitStage}>
+        <div className={styles.dotField} aria-hidden="true">
+          {DOTS.map((_, index) => (
+            <span key={index} ref={element => (dotsRef.current[index] = element)} />
+          ))}
+        </div>
+        <div ref={portraitRef} className={styles.portraitWrap}>
+          <span className={styles.photoIndex}>PORTRAIT / 001</span>
+          <img src={portrait} alt="Mohsin Ali Solangi, blockchain developer and lecturer" className={styles.portrait} />
+          <span className={styles.imageCaption}>Builder · Educator · Problem solver</span>
+        </div>
       </div>
 
-      <div className={styles.statsRight}>
-        {[
-          { val: '72', sup: '+', label: 'Projects Delivered' },
-          { val: '$1M', sup: '+', label: 'Raised for Clients' },
-          { val: '3', sup: '+', label: 'Years in Web3' },
-        ].map(s => (
-          <div key={s.label} className={styles.statItem}>
-            <div className={styles.statVal}>{s.val}<span>{s.sup}</span></div>
-            <div className={styles.statLabel}>{s.label}</div>
-          </div>
-        ))}
+      <div className={styles.statusRow}>
+        <span className={styles.status}><i /> Available for selected Web3 projects</span>
+        <span className={styles.chain}>PK / WORKING WORLDWIDE</span>
       </div>
 
       <div className={styles.content}>
-        <p className={styles.eyebrow}>Blockchain Engineer · CTO at Chainmint · Karachi, PK</p>
+        <p className={styles.eyebrow}>Mohsin Ali Solangi · Blockchain Developer</p>
         <h1 className={styles.title}>
-          <span className={styles.wordMask}>
-            <span ref={el => (wordsRef.current[0] = el)} className={styles.kineticWord}>MOHSIN</span>
-          </span><br />
-          <span className={styles.wordMask}>
-            <span ref={el => (wordsRef.current[1] = el)} className={`${styles.kineticWord} ${styles.orange}`}>ALI</span>
-          </span><br />
-          <span className={styles.wordMask}>
-            <span ref={el => (wordsRef.current[2] = el)} className={`${styles.kineticWord} ${styles.thin}`}>SOLANGI</span>
-          </span>
+          <span className={styles.mask}><span ref={el => (revealRef.current[0] = el)}>I DESIGN</span></span>
+          <span className={styles.mask}><span ref={el => (revealRef.current[1] = el)} className={styles.chromeText}>WEB3 SYSTEMS</span></span>
+          <span className={styles.mask}><span ref={el => (revealRef.current[2] = el)} className={styles.outline}>THAT MAKE SENSE.</span></span>
         </h1>
         <p className={styles.sub}>
-          Solidity · Rust · Solana · EVM<br />
-          Token Launch · DeFi · NFT · Smart Contracts
+          I help founders turn complex blockchain ideas into secure, usable products—from the first architecture decision to a live dApp.
         </p>
-        <div className={styles.actions}>
-          <a href="#projects" className={styles.btnPrimary}
-            onClick={e => { e.preventDefault(); smoothScrollTo('#projects') }}>
-            View My Work
-          </a>
-          <a href="#contact" className={styles.btnGhost}
-            onClick={e => { e.preventDefault(); smoothScrollTo('#contact') }}>
-            Let's Build →
-          </a>
+        <div className={styles.actionRow}>
+          <div className={styles.actions}>
+            <a href="#contact" className={styles.primary} onClick={event => { event.preventDefault(); smoothScrollTo('#contact') }}>
+              Discuss your project <span>↗</span>
+            </a>
+            <a href="#projects" className={styles.secondary} onClick={event => { event.preventDefault(); smoothScrollTo('#projects') }}>
+              See selected work
+            </a>
+          </div>
+          <div className={styles.socials} aria-label="Professional profiles">
+            {SOCIALS.map(social => (
+              <a key={social.label} href={social.href} target={social.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" aria-label={social.label} title={social.label}>
+                <SocialIcon name={social.name} />
+              </a>
+            ))}
+          </div>
         </div>
+      </div>
+
+      <div className={styles.expertise}>
+        <span className={styles.label}>Core expertise / 01—04</span>
+        {EXPERTISE.map((item, index) => <span key={item}>{String(index + 1).padStart(2, '0')} {item}</span>)}
       </div>
     </section>
   )

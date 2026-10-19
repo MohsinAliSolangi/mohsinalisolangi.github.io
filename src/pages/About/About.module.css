@@ -1,102 +1,19 @@
-.section {
-  padding: 5rem 2.5rem;
-  border-top: 1px solid #1e1e1e;
-}
-
-.eyebrow {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  color: #FF4800;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.eyebrow span {
-  display: inline-block;
-  width: 20px;
-  height: 1px;
-  background: #FF4800;
-}
-
-.title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2rem, 5vw, 3.75rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.4rem;
-}
-.orange { color: #FF4800; }
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  margin-top: 3rem;
-  align-items: start;
-}
-
-.body {
-  font-family: 'Space Mono', monospace;
-  font-size: 13px;
-  color: #ccc;
-  line-height: 1.85;
-}
-.body p + p { margin-top: 1rem; }
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.75rem;
-}
-.tag {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  color: #666;
-  border: 1px solid #2a2a2a;
-  padding: 0.3rem 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: border-color 0.2s, color 0.2s;
-  cursor: default;
-}
-.tag:hover { border-color: #FF4800; color: #FF4800; }
-
-.metricsGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: #1e1e1e;
-}
-.metricBox {
-  background: #0f0f0f;
-  padding: 2rem 1.5rem;
-  transition: background 0.2s;
-}
-.metricBox:hover { background: #141414; }
-.metricNum {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 700;
-  line-height: 1;
-  color: #fff;
-  letter-spacing: -0.03em;
-}
-.metricNum span { color: #FF4800; }
-.metricDesc {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  color: #666;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-top: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .section { padding: 4rem 1.25rem; }
-  .grid { grid-template-columns: 1fr; gap: 2.5rem; }
-}
+.section { padding: clamp(5rem, 10vw, 9rem) 2.5rem; border-bottom: 1px solid var(--border); }
+.eyebrow, .title, .body, .tag, .metricDesc { font-family: var(--font-mono); }
+.eyebrow { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem; color: var(--muted); font-size: 9px; letter-spacing: .17em; text-transform: uppercase; }
+.eyebrow span { width: 22px; height: 1px; background: var(--silver); }
+.title { font-family: var(--font-display); font-size: clamp(2.5rem, 5.8vw, 5.5rem); font-weight: 550; letter-spacing: -.055em; line-height: .98; }
+.muted { color: var(--muted); font-weight: 400; }
+.grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(3rem, 8vw, 8rem); align-items: start; margin-top: 4rem; }
+.body { color: #b7b7b3; font-family: var(--font-body); font-size: 16px; line-height: 1.85; }
+.body p:first-child { color: var(--white); font-size: 20px; line-height: 1.55; }
+.body p + p { margin-top: 1.2rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 2rem; }
+.tag { padding: .4rem .75rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; transition: .2s; }
+.tag:hover { border-color: var(--silver); color: var(--white); }
+.metricsGrid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); }
+.metricBox { min-height: 175px; padding: 1.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); background: linear-gradient(145deg, rgba(255,255,255,.045), transparent 65%); }
+.metricBox:nth-child(even) { border-right: 0; }.metricBox:nth-child(n+3) { border-bottom: 0; }
+.metricNum { background: var(--chrome); background-clip: text; -webkit-background-clip: text; color: transparent; font: 600 clamp(2.5rem, 5vw, 5rem) var(--font-display); letter-spacing: -.06em; line-height: 1; }
+.metricNum span { color: var(--silver); }.metricDesc { margin-top: 1rem; color: var(--muted); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+@media (max-width: 760px) { .section { padding: 5rem 1.25rem; }.grid { grid-template-columns: 1fr; gap: 2.5rem; }.metricBox { min-height: 140px; } }

@@ -1,64 +1,9 @@
-.section {
-  border-top: 1px solid #1e1e1e;
-  border-bottom: 1px solid #1e1e1e;
-}
-
-.row {
-  border-bottom: 1px solid #1e1e1e;
-}
-.row:last-child { border-bottom: none; }
-
-.header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 1.75rem 2.5rem;
-  color: #fff;
-  transition: background 0.2s;
-}
-.header:hover { background: #0f0f0f; }
-.rowOpen .header { color: #FF4800; }
-
-.title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
-  letter-spacing: -0.01em;
-}
-
-.icon {
-  font-family: 'Space Mono', monospace;
-  font-size: 22px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #2a2a2a;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.panel {
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  padding: 0 2.5rem;
-}
-
-.body {
-  font-family: 'Space Mono', monospace;
-  font-size: 13px;
-  color: #999;
-  line-height: 1.85;
-  max-width: 640px;
-  padding-bottom: 1.75rem;
-}
-
-@media (max-width: 600px) {
-  .header { padding: 1.25rem 1.25rem; }
-  .panel { padding: 0 1.25rem; }
-}
+.section { display: grid; grid-template-columns: .9fr 1.1fr; align-items: start; gap: clamp(3rem, 7vw, 7rem); padding: clamp(4.5rem, 6vw, 6.5rem) 2.5rem; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+.intro { min-width: 0; }.eyebrow { margin-bottom: 1rem; color: var(--muted); font: 9px var(--font-mono); letter-spacing: .17em; text-transform: uppercase; }
+.intro h2 { font: 550 clamp(2.4rem, 5vw, 4.8rem)/.98 var(--font-display); letter-spacing: -.055em; }.intro h2 span { color: var(--muted); font-weight: 400; }
+.list { min-width: 0; align-self: start; }
+.row { border-top: 1px solid var(--border); }.row:last-child { border-bottom: 1px solid var(--border); }
+.header { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.35rem 0; border: 0; background: transparent; color: var(--silver); cursor: pointer; text-align: left; }.rowOpen .header { color: var(--white); }
+.title { font: 500 15px var(--font-display); letter-spacing: -.01em; }.icon { color: var(--muted); font: 18px var(--font-mono); }
+.panel { overflow: hidden; transition: max-height .35s ease; }.body { max-width: 580px; padding: 0 2.5rem 1.4rem 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+@media (max-width: 800px) { .section { grid-template-columns: 1fr; gap: 2.5rem; padding: 4.5rem 1.25rem; }.intro { margin-bottom: 0; } }

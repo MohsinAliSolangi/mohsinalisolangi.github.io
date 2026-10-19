@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import NetworkGlyph from '../NetworkGlyph/NetworkGlyph'
+import CoinLogo from '../CoinLogo/CoinLogo'
 import { scrollTo as smoothScrollTo } from '../../lib/lenis'
 import styles from './Nav.module.css'
 
@@ -23,8 +23,8 @@ export default function Nav() {
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <a href="#" className={styles.logo} onClick={e => { e.preventDefault(); smoothScrollTo(0) }}>
-        <NetworkGlyph className={styles.logoGlyph} />
-        M<span>.</span>SOLANGI
+        <CoinLogo className={styles.logoGlyph} />
+        <span className={styles.logoType}>MOHSIN<span>.</span>SOLANGI</span>
       </a>
 
       <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
@@ -35,7 +35,13 @@ export default function Nav() {
         ))}
       </ul>
 
-      <a href="mailto:mohsinali.solangi789@gmail.com" className={styles.cta}>Hire Me</a>
+      <a
+        href="#contact"
+        className={styles.cta}
+        onClick={event => { event.preventDefault(); goTo('Contact') }}
+      >
+        Let's Talk
+      </a>
 
       <button className={styles.burger} onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
         <span className={menuOpen ? styles.x1 : ''} />
