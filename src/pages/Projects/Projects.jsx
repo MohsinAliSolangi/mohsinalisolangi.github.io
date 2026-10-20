@@ -119,6 +119,21 @@ export default function Projects() {
   const [showAll, setShowAll] = useState(false)
   const ref = useSectionAnimation({ itemsSelector: `.${styles.card}`, y: 30, stagger: 0.06 })
   const visibleProjects = showAll ? PROJECTS : PROJECTS.slice(0, 6)
+  const setCardPointer = (event) => {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+    const card = event.currentTarget
+    const bounds = card.getBoundingClientRect()
+    const x = (event.clientX - bounds.left) / bounds.width
+    const y = (event.clientY - bounds.top) / bounds.height
+    card.style.setProperty('--pointer-x', `${x * 100}%`)
+    card.style.setProperty('--pointer-y', `${y * 100}%`)
+    card.style.setProperty('--rotate-x', `${(0.5 - y) * 7.5}deg`)
+    card.style.setProperty('--rotate-y', `${(x - 0.5) * 7.5}deg`)
+  }
+  const resetCardPointer = (event) => {
+    event.currentTarget.style.setProperty('--rotate-x', '0deg')
+    event.currentTarget.style.setProperty('--rotate-y', '0deg')
+  }
   return (
     <section className={styles.section} id="projects" ref={ref}>
       <div className={styles.headingRow}>
@@ -137,32 +152,36 @@ export default function Projects() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`View live project: ${p.title}`}
+            onPointerMove={setCardPointer}
+            onPointerLeave={resetCardPointer}
           >
-            <div className={styles.preview}>
-              <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>
-              <img
-                src={shot(p.url)}
-                alt={`Screenshot preview of ${p.title}`}
-                loading="lazy"
-                width="800"
-                height="500"
-              />
-            </div>
-            <div className={styles.body}>
-              <div className={styles.cardLabel}>{p.label}</div>
-              <div className={styles.cardTitle}>{p.title}</div>
-              <div className={styles.cardDesc}>{p.desc}</div>
-              <div className={styles.chips}>
-                {p.stack.map(s => (
-                  <span key={s} className={styles.chip}>
-                    <TechIcon name={iconFor(s)} label={s} />
-                    {s}
-                  </span>
-                ))}
+            <div className={styles.cardSurface}>
+              <div className={styles.preview}>
+                <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>
+                <img
+                  src={shot(p.url)}
+                  alt={`Screenshot preview of ${p.title}`}
+                  loading="lazy"
+                  width="800"
+                  height="500"
+                />
               </div>
-              <div className={styles.footer}>
-                <span className={styles.result}>{p.result}</span>
-                <span className={styles.arrow}>↗</span>
+              <div className={styles.body}>
+                <div className={styles.cardLabel}>{p.label}</div>
+                <div className={styles.cardTitle}>{p.title}</div>
+                <div className={styles.cardDesc}>{p.desc}</div>
+                <div className={styles.chips}>
+                  {p.stack.map(s => (
+                    <span key={s} className={styles.chip}>
+                      <TechIcon name={iconFor(s)} label={s} />
+                      {s}
+                    </span>
+                  ))}
+                </div>
+                <div className={styles.footer}>
+                  <span className={styles.result}>{p.result}</span>
+                  <span className={styles.arrow}>↗</span>
+                </div>
               </div>
             </div>
           </a>

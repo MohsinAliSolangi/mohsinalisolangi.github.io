@@ -14,6 +14,9 @@ import About from './src/pages/About/About.jsx'
 import Services from './src/pages/Services/Services.jsx'
 import Projects from './src/pages/Projects/Projects.jsx'
 import Contact from './src/pages/Contact/Contact.jsx'
+import FAQ from './src/components/FAQ/FAQ.jsx'
+import AmbientCanvas from './src/components/AmbientCanvas/AmbientCanvas.jsx'
+import ScrollHud from './src/components/ScrollHud/ScrollHud.jsx'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -37,9 +40,11 @@ export default function App() {
 
   return (
     <>
+      <AmbientCanvas />
       {!loaded && <Loader onDone={() => setLoaded(true)} />}
-      <div style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s ease' }}>
+      <div className="site-shell" style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s ease' }}>
         <Nav />
+        <ScrollHud />
         <Hero />
         <Ticker />
         <About />
@@ -48,6 +53,7 @@ export default function App() {
         <Services />
         <Projects />
         <Approach />
+        <FAQ />
         <Contact />
         <Footer />
       </div>

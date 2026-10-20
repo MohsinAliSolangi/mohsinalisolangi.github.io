@@ -1,0 +1,28 @@
+.hud {
+  position: fixed;
+  z-index: 82;
+  top: 50%;
+  right: 1.15rem;
+  display: grid;
+  width: 76px;
+  justify-items: end;
+  gap: .8rem;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+.system, .count { font: 7px var(--font-mono); letter-spacing: .13em; text-transform: uppercase; }
+.system { color: var(--dim); }
+.track { position: absolute; top: 25px; right: 3px; bottom: 24px; width: 1px; background: rgba(255,255,255,.12); overflow: hidden; }
+.track span { position: absolute; inset: 0; transform: scaleY(0); transform-origin: top; background: linear-gradient(#ecece8, #b88450); box-shadow: 0 0 8px rgba(255,255,255,.45); will-change: transform; }
+.dots { position: relative; display: grid; justify-items: end; gap: .5rem; padding-right: 0; }
+.dots button { display: flex; min-height: 18px; align-items: center; justify-content: flex-end; gap: .55rem; border: 0; background: transparent; color: var(--dim); cursor: pointer; pointer-events: auto; }
+.dots button span { max-width: 0; overflow: hidden; opacity: 0; font: 7px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; transition: max-width .25s, opacity .25s, color .25s; white-space: nowrap; }
+.dots button i { position: relative; z-index: 1; display: block; width: 7px; height: 7px; border: 1px solid rgba(255,255,255,.42); border-radius: 50%; background: #090909; transition: transform .25s, background .25s, box-shadow .25s; }
+.dots button:hover span, .dots button.active span { max-width: 54px; opacity: 1; color: var(--silver); }
+.dots button.active i { border-color: #e2b47d; background: #d59a5d; box-shadow: 0 0 13px rgba(213,154,93,.9); transform: scale(1.2); }
+.count { color: var(--silver); }
+
+@media (max-width: 980px), (prefers-reduced-motion: reduce) {
+  .hud { display: none; }
+}

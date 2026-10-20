@@ -2,7 +2,7 @@
 .eyebrow { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem; color: var(--muted); font: 9px var(--font-mono); letter-spacing: .17em; text-transform: uppercase; }.eyebrow span { width: 22px; height: 1px; background: var(--silver); }
 .title { font: 550 clamp(2.5rem, 5.8vw, 5.5rem)/.98 var(--font-display); letter-spacing: -.055em; }.muted { color: var(--muted); font-weight: 400; }
 .list { margin-top: 4rem; border-top: 1px solid var(--border); }
-.row { display: grid; grid-template-columns: 4rem minmax(0, 1fr) auto; gap: 1.5rem; align-items: start; padding: 2rem 0; border-bottom: 1px solid var(--border); transition: padding .25s, background .25s; }
+.row { display: grid; grid-template-columns: 4rem minmax(0, 1fr) auto; gap: 1.5rem; align-items: start; padding: 2rem 0; border-bottom: 1px solid var(--border); color: inherit; text-decoration: none; transition: padding .25s, background .25s; }
 .row:hover { padding-left: .8rem; background: linear-gradient(90deg, rgba(255,255,255,.04), transparent 70%); }
 .num { padding-top: .3rem; color: var(--dim); font: 10px var(--font-mono); }
 .name { margin-bottom: .55rem; color: var(--white); font: 500 clamp(19px, 2.1vw, 27px) var(--font-display); letter-spacing: -.03em; }

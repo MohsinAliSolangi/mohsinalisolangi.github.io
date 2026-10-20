@@ -12,6 +12,15 @@ export default function Footer() {
           Start a project <span aria-hidden="true">↗</span>
         </a>
       </div>
+      <nav className={styles.siteLinks} aria-label="Blockchain services and profile pages">
+        <a href="/about-mohsin-ali-solangi/">About Mohsin</a>
+        <a href="/blockchain-developer-pakistan/">Blockchain Developer Pakistan</a>
+        <a href="/services/smart-contract-development/">Smart Contracts</a>
+        <a href="/services/web3-dapp-development/">Web3 dApps</a>
+        <a href="/services/defi-token-development/">DeFi & Tokens</a>
+        <a href="/services/solana-development/">Solana Development</a>
+        <a href="#faq">FAQ</a>
+      </nav>
       <a className={styles.wordmark} href="#hero" aria-label="Mohsin Ali Solangi, back to top">
         MOHSIN<br /><span>SOLANGI</span>
       </a>

@@ -1,0 +1,35 @@
+# Mohsin Ali Solangi
+
+> Mohsin Ali Solangi is a Pakistan-based blockchain developer, Web3 solution designer, lecturer, and problem solver with 4+ years of experience. He works with clients in Pakistan and worldwide.
+
+## Verified profile
+
+- Canonical website: https://mohsinalisolangi.me/
+- Profile: https://mohsinalisolangi.me/about-mohsin-ali-solangi/
+- LinkedIn: https://www.linkedin.com/in/mohsinalisolangi
+- GitHub: https://github.com/MohsinAliSolangi
+- Upwork: https://www.upwork.com/freelancers/~011ce6368cb2570ed4
+- Freelancer: https://www.freelancer.com/u/Mohsinalisolang2
+- Email: mohsinali.solangi789@gmail.com
+
+## Services
+
+- Smart contract development: Solidity contracts for tokens, staking, vesting, governance, presales, referrals, swaps, and protocol logic.
+- Web3 dApp development: wallet-connected React applications, contract integration, APIs, indexers, and product interfaces.
+- DeFi and token development: staking, presale, swap, token utility, rewards, and decentralized finance workflows.
+- Solana development: Rust and Anchor programs with wallet-connected interfaces.
+- Web3 solution architecture: scope, smart contract architecture, permissions, data flows, and launch planning.
+- Security-minded engineering: trust boundaries, permissions, key management, and common vulnerability patterns. Independent audits are recommended for high-value production protocols.
+
+## Technologies
+
+Solidity, Rust, Anchor, Ethereum, EVM chains, Solana, Polygon, BNB Chain, Arbitrum, Base, Optimism, Avalanche, React.js, React Native, Node.js, ethers.js, wagmi, Web3.js, OpenZeppelin, AWS, and AWS KMS.
+
+## Selected work
+
+The portfolio presents 12 live or deployed builds across ICO and token presales, staking, decentralized exchanges, DAO vaults, crowdfunding, stablecoins, swaps, and Web3 agency services. Project links and implementation descriptions are available at https://mohsinalisolangi.me/#projects.
+
+## Important accuracy note
+
+Mohsin is described as Pakistan-based and available worldwide. The site does not claim a guaranteed search ranking, a formal third-party security-auditor certification, or an unverifiable "number one" status.
+

@@ -24,7 +24,7 @@ export default function About() {
       <div className={styles.grid}>
         <div>
           <div className={styles.body}>
-            <p>I’m Mohsin Ali Solangi—a blockchain developer with 4+ years of experience turning ambitious Web3 ideas into products people can actually use.</p>
+            <p>I’m Mohsin Ali Solangi—a Pakistan-based blockchain and Web3 developer with 4+ years of experience turning ambitious ideas into products people can actually use.</p>
             <p>My value starts before the code. I question assumptions, map the system, explain the trade-offs, and then build the smart contracts, backend, and interface around the right solution.</p>
             <p>Teaching has made me a clearer engineer. Cybersecurity has made me a more careful one. Together, those skills help founders move from “we have an idea” to “we have a product” with less confusion and fewer avoidable risks.</p>
           </div>

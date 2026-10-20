@@ -1,0 +1,10 @@
+{
+  "name": "Mohsin Ali Solangi — Blockchain Developer",
+  "short_name": "Mohsin Solangi",
+  "description": "Pakistan-based blockchain and Web3 developer for smart contracts, dApps, DeFi, Solana and token products.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [{ "src": "/favicon.png", "sizes": "128x128", "type": "image/png" }]
+}

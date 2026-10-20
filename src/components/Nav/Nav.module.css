@@ -11,6 +11,7 @@
 .cta:hover { background: var(--white); color: var(--ink); }
 .burger { display: none; justify-self: end; flex-direction: column; gap: 5px; padding: 5px; border: 0; background: none; cursor: pointer; }
 .burger span { display: block; width: 23px; height: 1px; background: var(--white); transition: .2s; }
+.progress { position: absolute; right: 0; bottom: -1px; left: 0; height: 1px; transform: scaleX(0); transform-origin: left center; background: linear-gradient(90deg, #6d6d6a, #f1f1ed 62%, #b88450); box-shadow: 0 0 12px rgba(255,255,255,.24); will-change: transform; }
 .x1 { transform: translateY(6px) rotate(45deg); }.x2 { opacity: 0; }.x3 { transform: translateY(-6px) rotate(-45deg); }
 @media (max-width: 800px) {
   .nav { grid-template-columns: 1fr auto; padding: 1rem 1.25rem; }

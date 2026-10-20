@@ -2,12 +2,12 @@ import useSectionAnimation from '../../lib/useSectionAnimation'
 import styles from './Services.module.css'
 
 const SERVICES = [
-  { num: '01', name: 'Smart contract development', desc: 'Custom contracts for tokens, staking, vesting, governance, and protocol logic — designed around your use case, with security considered from day one.', tag: 'Solidity · EVM' },
-  { num: '02', name: 'Web3 product & dApp development', desc: 'A complete user-facing product: wallet connection, on-chain interactions, responsive interface, and the supporting app logic.', tag: 'dApps · Product' },
-  { num: '03', name: 'DeFi & token launch solutions', desc: 'Build the mechanics behind your launch or protocol, from presale and token utility to staking and other DeFi features.', tag: 'DeFi · Token launch' },
-  { num: '04', name: 'Solana program development', desc: 'On-chain programs for Solana using Rust and Anchor, shaped to fit your product requirements and user experience.', tag: 'Rust · Anchor' },
-  { num: '05', name: 'Web3 solution design', desc: 'Turn a rough idea into a clear technical plan. I help define scope, map the architecture, and choose a practical path to launch.', tag: 'Architecture · Planning' },
-  { num: '06', name: 'Security-minded engineering', desc: 'Think through trust boundaries, permissions, and common contract risks early — before they become expensive product problems.', tag: 'Security · Review' },
+  { num: '01', name: 'Smart contract development', desc: 'Custom Solidity contracts for tokens, staking, vesting, governance, presales, and protocol logic—designed around your use case with security considered from day one.', tag: 'Solidity · EVM', href: '/services/smart-contract-development/' },
+  { num: '02', name: 'Web3 product & dApp development', desc: 'Complete decentralized application development: wallet connection, on-chain interactions, responsive React interfaces, APIs, and supporting product logic.', tag: 'dApps · Product', href: '/services/web3-dapp-development/' },
+  { num: '03', name: 'DeFi & token development', desc: 'DeFi platform and token development for presales, staking, vesting, swaps, token utility, rewards, and other on-chain financial workflows.', tag: 'DeFi · Token launch', href: '/services/defi-token-development/' },
+  { num: '04', name: 'Solana program development', desc: 'High-performance Solana programs using Rust and Anchor, integrated with a clear wallet-connected user experience.', tag: 'Rust · Anchor', href: '/services/solana-development/' },
+  { num: '05', name: 'Web3 solution architecture', desc: 'Turn a rough blockchain idea into a clear technical plan. I help define scope, map smart contracts and system architecture, and choose a practical path to launch.', tag: 'Architecture · Planning', href: '#contact' },
+  { num: '06', name: 'Security-minded blockchain engineering', desc: 'Identify trust boundaries, permissions, private-key risks, and common smart contract vulnerabilities before they become expensive product problems.', tag: 'Security · Review', href: '#contact' },
 ]
 
 export default function Services() {
@@ -20,14 +20,14 @@ export default function Services() {
       </h2>
       <div className={styles.list}>
         {SERVICES.map(s => (
-          <div key={s.num} className={styles.row}>
+          <a key={s.num} className={styles.row} href={s.href}>
             <div className={styles.num}>{s.num}</div>
             <div className={styles.body}>
               <div className={styles.name}>{s.name}</div>
               <div className={styles.desc}>{s.desc}</div>
             </div>
             <div className={styles.tag}>{s.tag}</div>
-          </div>
+          </a>
         ))}
       </div>
     </section>

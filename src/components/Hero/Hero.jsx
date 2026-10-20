@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import portrait from '../../assets/mohsin-portrait.jpg'
+import portrait from '../../assets/mohsin-portrait-halftone-v2.webp'
 import { scrollTo as smoothScrollTo } from '../../lib/lenis'
 import SocialIcon from '../SocialIcon/SocialIcon'
 import styles from './Hero.module.css'
@@ -26,35 +26,63 @@ export default function Hero() {
   const heroRef = useRef(null)
   const revealRef = useRef([])
   const portraitRef = useRef(null)
+  const portraitImageRef = useRef(null)
   const dotsRef = useRef([])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+      if (reduceMotion) return
+
       gsap.fromTo(
         revealRef.current,
         { yPercent: 110, opacity: 0 },
         { yPercent: 0, opacity: 1, duration: 1.05, ease: 'power4.out', stagger: 0.1, delay: 0.15 }
       )
 
-      gsap.fromTo(portraitRef.current, { opacity: 0, scale: 0.9, x: 35 }, {
-        opacity: 1, scale: 1, x: 0, duration: 1.2, delay: 0.25, ease: 'power3.out',
+      const portraitExit = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: () => `+=${Math.max(320, window.innerHeight * 0.58)}`,
+          scrub: 0.7,
+          invalidateOnRefresh: true,
+        },
       })
+
+      portraitExit
+        .fromTo(portraitRef.current,
+          { clipPath: 'inset(0 0 0% 0)', opacity: 1 },
+          { clipPath: 'inset(0 0 16% 0)', opacity: 0, ease: 'power2.in' }
+        )
+        .fromTo(portraitImageRef.current,
+          { scale: 1, yPercent: 0, filter: 'grayscale(1) contrast(1.1) brightness(.96)' },
+          { scale: 0.94, yPercent: -3, filter: 'grayscale(1) contrast(1.7) brightness(.58)', ease: 'power2.in' },
+          0
+        )
 
       gsap.to(portraitRef.current, {
         y: 70,
-        scale: 0.96,
         ease: 'none',
         scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: true },
       })
 
       gsap.to(dotsRef.current, {
-        x: index => DOTS[index].x,
-        y: index => DOTS[index].y,
-        scale: index => 0.15 + (index % 3) * 0.08,
+        x: index => DOTS[index].x * 1.35,
+        y: index => DOTS[index].y * 1.35,
+        scale: index => 0.08 + (index % 3) * 0.05,
         opacity: 0,
+        rotation: index => (index % 2 ? 1 : -1) * (35 + (index % 5) * 12),
         ease: 'power2.in',
         stagger: { each: 0.002, from: 'center' },
-        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: '65% top', scrub: 0.45 },
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: () => `+=${Math.max(320, window.innerHeight * 0.58)}`,
+          scrub: 0.55,
+          invalidateOnRefresh: true,
+        },
       })
     }, heroRef)
     return () => ctx.revert()
@@ -69,9 +97,9 @@ export default function Hero() {
           ))}
         </div>
         <div ref={portraitRef} className={styles.portraitWrap}>
-          <span className={styles.photoIndex}>PORTRAIT / 001</span>
-          <img src={portrait} alt="Mohsin Ali Solangi, blockchain developer and lecturer" className={styles.portrait} />
-          <span className={styles.imageCaption}>Builder · Educator · Problem solver</span>
+          <span className={styles.photoIndex}>HALFTONE / 001</span>
+          <img ref={portraitImageRef} src={portrait} alt="Mohsin Ali Solangi, blockchain developer and lecturer" className={styles.portrait} />
+          <span className={styles.imageCaption}>A human perspective on Web3</span>
         </div>
       </div>
 
@@ -81,14 +109,14 @@ export default function Hero() {
       </div>
 
       <div className={styles.content}>
-        <p className={styles.eyebrow}>Mohsin Ali Solangi · Blockchain Developer</p>
+        <p className={styles.eyebrow}>Mohsin Ali Solangi · Pakistan-based Blockchain & Web3 Developer</p>
         <h1 className={styles.title}>
           <span className={styles.mask}><span ref={el => (revealRef.current[0] = el)}>I DESIGN</span></span>
           <span className={styles.mask}><span ref={el => (revealRef.current[1] = el)} className={styles.chromeText}>WEB3 SYSTEMS</span></span>
           <span className={styles.mask}><span ref={el => (revealRef.current[2] = el)} className={styles.outline}>THAT MAKE SENSE.</span></span>
         </h1>
         <p className={styles.sub}>
-          I help founders turn complex blockchain ideas into secure, usable products—from the first architecture decision to a live dApp.
+          I help founders in Pakistan and worldwide turn complex blockchain ideas into secure, usable products—from Solidity smart contracts and Solana programs to complete DeFi platforms and live dApps.
         </p>
         <div className={styles.actionRow}>
           <div className={styles.actions}>

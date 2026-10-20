@@ -37,6 +37,11 @@ body {
   position: relative;
 }
 
+.site-shell {
+  position: relative;
+  z-index: 1;
+}
+
 body::after {
   content: '';
   position: fixed;
