@@ -43,11 +43,10 @@ export default function Nav() {
       </ul>
 
       <a
-        href="#contact"
+        href="/free-blockchain-consultation/"
         className={styles.cta}
-        onClick={event => { event.preventDefault(); goTo('Contact') }}
       >
-        Let's Talk
+        Free Consultation
       </a>
 
       <button className={styles.burger} onClick={() => setMenuOpen(o => !o)} aria-label="Menu">

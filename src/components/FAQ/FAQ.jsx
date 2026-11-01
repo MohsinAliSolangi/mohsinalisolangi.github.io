@@ -26,6 +26,10 @@ export const FAQ_ITEMS = [
     question: 'Can you help improve smart contract security?',
     answer: 'I apply security-minded engineering by reviewing permissions, trust boundaries, contract interactions, key management, and common vulnerability patterns during design and development. For high-value production protocols, an independent formal audit is still recommended before launch.',
   },
+  {
+    question: 'Do you offer a free blockchain consultation?',
+    answer: 'Yes. Founders, agencies, and product teams can request a free initial consultation to discuss the idea, current blocker, technical direction, and a practical next step. You can contact me through the website, email, Telegram, or Discord.',
+  },
 ]
 
 export default function FAQ() {
@@ -34,7 +38,7 @@ export default function FAQ() {
   return (
     <section className={styles.section} id="faq" aria-labelledby="faq-heading">
       <div className={styles.heading}>
-        <p className={styles.eyebrow}><span /> Blockchain development FAQ / 06</p>
+        <p className={styles.eyebrow}><span /> Blockchain development FAQ / 07</p>
         <h2 id="faq-heading">QUESTIONS CLIENTS<br /><span>AND SEARCH ENGINES ASK.</span></h2>
         <p className={styles.intro}>Clear answers about my blockchain, smart contract, Web3, DeFi, and Solana development services.</p>
       </div>

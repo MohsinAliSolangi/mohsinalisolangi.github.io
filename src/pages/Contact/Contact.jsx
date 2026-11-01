@@ -10,6 +10,8 @@ const LINKS = [
   { icon: 'github', label: 'GitHub', value: 'github.com/MohsinAliSolangi', href: 'https://github.com/MohsinAliSolangi' },
   { icon: 'upwork', label: 'Upwork', value: 'Available for Freelance Projects', href: 'https://www.upwork.com/freelancers/~011ce6368cb2570ed4' },
   { icon: 'freelancer', label: 'Freelancer', value: 'Available for Freelance Projects', href: 'https://www.freelancer.com/u/Mohsinalisolang2' },
+  { icon: 'telegram', label: 'Telegram', value: '@mohsinalisolangi', href: 'https://t.me/mohsinalisolangi' },
+  { icon: 'discord', label: 'Discord', value: '@mohsinalisolangi', href: 'https://discord.com/app' },
 ]
 
 function CoinMark({ large = false }) {
@@ -70,16 +72,16 @@ export default function Contact() {
 
   return (
     <section className={styles.section} id="contact" ref={ref}>
-      <p className={styles.eyebrow}><span /> Your next move / 06</p>
+      <p className={styles.eyebrow}><span /> Your next move / 08</p>
       <h2 className={styles.title}>
         BRING THE PROBLEM.<br /><span className={styles.muted}>I’LL HELP SHAPE THE SOLUTION.</span>
       </h2>
       <div className={styles.wrap}>
         <p className={styles.desc}>
-          Tell me what you’re building, what is blocking you, and what a successful launch looks like. I’ll respond with a clear next step—no agency layers, no vague sales loop.
+          Start with a free blockchain consultation. Tell me what you’re building, what is blocking you, and what a successful launch looks like. I’ll respond with a clear next step—no agency layers, no vague sales loop.
         </p>
         <button type="button" className={styles.openContact} onClick={openDialog}>
-          <span>Start a project conversation</span>
+          <span>Book a free consultation</span>
           <span aria-hidden="true">↗</span>
         </button>
       </div>
@@ -131,9 +133,9 @@ export default function Contact() {
             <CoinMark large />
             <p className={styles.modalEyebrow}>Direct line to Mohsin</p>
             <h2 id="contact-dialog-title" className={styles.modalTitle}>Let’s make the next decision easier.</h2>
-            <p className={styles.modalCopy}>Send the idea, challenge, timeline, or even a rough voice-note-style brief by email. I’ll reply directly with the most useful next step.</p>
-            <a className={styles.emailCta} href="mailto:mohsinali.solangi789@gmail.com?subject=Let%E2%80%99s%20talk%20about%20a%20Web3%20project">
-              Tell me about the project <span aria-hidden="true">↗</span>
+            <p className={styles.modalCopy}>Start with a free consultation. Send the idea, challenge, timeline, or a rough brief by email or Telegram. I’ll reply directly with the most useful next step.</p>
+            <a className={styles.emailCta} href="mailto:mohsinali.solangi789@gmail.com?subject=Free%20Blockchain%20Consultation">
+              Request free consultation <span aria-hidden="true">↗</span>
             </a>
             <div className={styles.modalLinks}>
               {LINKS.filter(link => link.label !== 'Email').map(link => (

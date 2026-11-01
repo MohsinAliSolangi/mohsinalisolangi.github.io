@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { initLenis } from './src/lib/lenis.js'
@@ -9,19 +9,20 @@ import Stack from './src/components/Stack/Stack.jsx'
 import Signature from './src/components/Signature/Signature.jsx'
 import Approach from './src/components/Approach/Approach.jsx'
 import Footer from './src/components/Footer/Footer.jsx'
-import Loader from './src/components/Loader/Loader.jsx'
 import About from './src/pages/About/About.jsx'
 import Services from './src/pages/Services/Services.jsx'
 import Projects from './src/pages/Projects/Projects.jsx'
 import Contact from './src/pages/Contact/Contact.jsx'
 import FAQ from './src/components/FAQ/FAQ.jsx'
-import AmbientCanvas from './src/components/AmbientCanvas/AmbientCanvas.jsx'
 import ScrollHud from './src/components/ScrollHud/ScrollHud.jsx'
+import ExpertAnswers from './src/components/ExpertAnswers/ExpertAnswers.jsx'
+
+const AmbientCanvas = lazy(() => import('./src/components/AmbientCanvas/AmbientCanvas.jsx'))
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function App() {
-  const [loaded, setLoaded] = useState(false)
+  const [enhancementsReady, setEnhancementsReady] = useState(false)
   //Work Done By Mohsin Ali
 
   useEffect(() => {
@@ -38,23 +39,38 @@ export default function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const showEnhancements = () => setEnhancementsReady(true)
+    const idleId = 'requestIdleCallback' in window
+      ? window.requestIdleCallback(showEnhancements, { timeout: 1400 })
+      : window.setTimeout(showEnhancements, 900)
+
+    return () => {
+      if ('cancelIdleCallback' in window) window.cancelIdleCallback(idleId)
+      else window.clearTimeout(idleId)
+    }
+  }, [])
+
   return (
     <>
-      <AmbientCanvas />
-      {!loaded && <Loader onDone={() => setLoaded(true)} />}
-      <div className="site-shell" style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s ease' }}>
+      <Suspense fallback={null}>{enhancementsReady && <AmbientCanvas />}</Suspense>
+      <div className="site-shell">
+        <a className="skip-link" href="#main-content">Skip to main content</a>
         <Nav />
         <ScrollHud />
-        <Hero />
-        <Ticker />
-        <About />
-        <Signature />
-        <Stack />
-        <Services />
-        <Projects />
-        <Approach />
-        <FAQ />
-        <Contact />
+        <main id="main-content">
+          <Hero />
+          <Ticker />
+          <About />
+          <Signature />
+          <Stack />
+          <Services />
+          <Projects />
+          <Approach />
+          <ExpertAnswers />
+          <FAQ />
+          <Contact />
+        </main>
         <Footer />
       </div>
     </>

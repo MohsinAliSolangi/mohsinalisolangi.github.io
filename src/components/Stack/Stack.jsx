@@ -4,28 +4,36 @@ import styles from './Stack.module.css'
 
 const GROUPS = [
   {
-    num: '01', title: 'Languages', desc: 'The foundations for secure on-chain and application logic.',
-    items: [['solidity', 'Solidity'], ['rust', 'Rust'], ['javascript', 'JavaScript']],
+    num: '01', title: 'Languages & Core', desc: 'The foundations for secure on-chain and application logic.',
+    items: [['solidity', 'Solidity'], ['rust', 'Rust'], ['javascript', 'JavaScript'], ['typescript', 'TypeScript']],
   },
   {
-    num: '02', title: 'Frameworks', desc: 'Production tooling for programs, interfaces, APIs, and mobile.',
-    items: [['react', 'React.js'], ['node', 'Node.js'], ['anchor', 'Anchor'], ['react', 'React Native']],
+    num: '02', title: 'Application Stack', desc: 'Production interfaces, APIs, backends, and mobile applications.',
+    items: [['react', 'React.js'], ['nextjs', 'Next.js'], ['node', 'Node.js'], ['express', 'Express.js'], ['react', 'React Native'], ['anchor', 'Anchor']],
   },
   {
-    num: '03', title: 'Web3 Libraries', desc: 'Reliable wallet, contract, and protocol integrations.',
-    items: [['ethers', 'ethers.js'], ['wagmi', 'wagmi'], ['web3', 'Web3.js'], ['security', 'OpenZeppelin']],
+    num: '03', title: 'Contracts & Testing', desc: 'Tooling for contract development, testing, deployment, and review.',
+    items: [['hardhat', 'Hardhat'], ['foundry', 'Foundry'], ['truffle', 'Truffle'], ['remix', 'Remix IDE'], ['security', 'OpenZeppelin'], ['audit', 'Slither'], ['audit', 'MythX']],
   },
   {
-    num: '04', title: 'Networks', desc: 'Multi-chain products shaped for the network they run on.',
-    items: [['ethereum', 'Ethereum / EVM'], ['solana', 'Solana'], ['network', 'Polygon'], ['network', 'BNB Chain'], ['network', 'Arbitrum'], ['network', 'Base']],
+    num: '04', title: 'Web3 & Wallets', desc: 'Reliable wallet, contract, and protocol integrations across ecosystems.',
+    items: [['ethers', 'ethers.js'], ['wagmi', 'wagmi'], ['web3', 'Web3.js'], ['solanaweb3', 'Solana Web3.js'], ['reown', 'Reown AppKit'], ['metamask', 'MetaMask'], ['thirdweb', 'Thirdweb']],
   },
   {
-    num: '05', title: 'Cloud & Security', desc: 'Infrastructure and safeguards behind dependable products.',
-    items: [['aws', 'AWS'], ['security', 'AWS KMS'], ['security', 'Contract Security'], ['node', 'APIs & Indexers']],
+    num: '05', title: 'Token Standards', desc: 'Fungible, NFT, multi-token, vault, and cross-ecosystem standards.',
+    items: [['token', 'ERC-20'], ['nft', 'ERC-721'], ['token', 'ERC-1155'], ['vault', 'ERC-4626'], ['solana', 'SPL Token'], ['token', 'BEP-20']],
   },
   {
-    num: '06', title: 'Product Systems', desc: 'The Web3 use cases I can take from architecture to launch.',
-    items: [['network', 'DeFi'], ['nft', 'NFTs'], ['ico', 'ICO / IDO'], ['web3', 'dApps']],
+    num: '06', title: 'Data & Storage', desc: 'Structured data, application state, and decentralized file storage.',
+    items: [['mongoose', 'Mongoose'], ['database', 'MongoDB'], ['mysql', 'MySQL'], ['postgresql', 'PostgreSQL'], ['supabase', 'Supabase'], ['ipfs', 'IPFS'], ['pinata', 'Pinata']],
+  },
+  {
+    num: '07', title: 'RPC & Infrastructure', desc: 'Production-grade chain access, indexing, cloud, and key management.',
+    items: [['infura', 'Infura'], ['alchemy', 'Alchemy'], ['moralis', 'Moralis'], ['aws', 'AWS'], ['security', 'AWS KMS'], ['node', 'APIs & Indexers']],
+  },
+  {
+    num: '08', title: 'Networks & Security', desc: 'Multi-chain delivery backed by security-minded engineering.',
+    items: [['ethereum', 'Ethereum / EVM'], ['solana', 'Solana'], ['network', 'Polygon'], ['network', 'BNB Chain'], ['network', 'Arbitrum'], ['network', 'Base'], ['security', 'Contract Security']],
   },
 ]
 

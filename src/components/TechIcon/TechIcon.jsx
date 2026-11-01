@@ -19,9 +19,28 @@ export default function TechIcon({ name, label }) {
     </svg>
   )
 
+  if (name === 'typescript') return (
+    <svg {...common} fill="none">
+      <rect x="3" y="3" width="26" height="26" rx="4" stroke="currentColor" />
+      <path d="M8 11h11M13.5 11v12M20 14.5c1.2-1 4.6-1.2 4.6.8 0 2.8-5.2 1-5.2 4.4 0 2.3 3.8 2.1 5.5.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+    </svg>
+  )
+
+  if (name === 'nextjs') return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+      <circle cx="16" cy="16" r="13" /><path d="M10 22V10l12 14M21.5 10v8" />
+    </svg>
+  )
+
   if (name === 'node') return (
     <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round">
       <path d="M16 2.5 27.5 9v14L16 29.5 4.5 23V9L16 2.5Z" /><path d="M11 21V11l10 10V11" />
+    </svg>
+  )
+
+  if (name === 'express') return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+      <path d="M4 9h24M4 16h15M4 23h24M21 13l7 7M28 13l-7 7" />
     </svg>
   )
 
@@ -40,6 +59,60 @@ export default function TechIcon({ name, label }) {
   if (name === 'security') return (
     <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round">
       <path d="M16 2.5 27 7v8c0 7-4.4 11.7-11 14.5C9.4 26.7 5 22 5 15V7l11-4.5Z" /><path d="m10.5 16 3.5 3.5 7.5-8" />
+    </svg>
+  )
+
+  if (['hardhat', 'foundry', 'truffle'].includes(name)) return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m18 4 10 10-4 4-3-3-10 10-4-4 10-10-3-3 4-4Z" /><path d="m5 18 9 9M4 27h10" />
+    </svg>
+  )
+
+  if (name === 'remix') return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 5h11l5 5v17H9V5Z" /><path d="M20 5v6h5M6 10H4v17h15M13 16h8M13 21h8" />
+    </svg>
+  )
+
+  if (name === 'audit') return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="13.5" cy="13.5" r="8.5" /><path d="m20 20 7 7M10 13.5l2.3 2.3 5-5" />
+    </svg>
+  )
+
+  if (['metamask', 'reown'].includes(name)) return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">
+      <path d="M4 9.5 16 4l12 5.5v14L16 28 4 23.5v-14Z" /><path d="m4 9.5 12 8 12-8M16 17.5V28M10 14l6-4 6 4" />
+    </svg>
+  )
+
+  if (['thirdweb', 'ipfs', 'pinata'].includes(name)) return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round">
+      <path d="m16 3 12 6.5v13L16 29 4 22.5v-13L16 3Z" /><path d="m4 9.5 12 7 12-7M16 16.5V29" /><circle cx="16" cy="9" r="2" />
+    </svg>
+  )
+
+  if (['database', 'mongoose', 'mysql', 'postgresql', 'supabase'].includes(name)) return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.5">
+      <ellipse cx="16" cy="7" rx="11" ry="4" /><path d="M5 7v9c0 2.2 4.9 4 11 4s11-1.8 11-4V7M5 16v9c0 2.2 4.9 4 11 4s11-1.8 11-4v-9" />
+    </svg>
+  )
+
+  if (['infura', 'alchemy', 'moralis'].includes(name)) return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+      <circle cx="7" cy="16" r="3" /><circle cx="25" cy="8" r="3" /><circle cx="25" cy="24" r="3" /><path d="m10 15 12-5.5M10 17l12 5.5M25 11v10" />
+    </svg>
+  )
+
+  if (['token', 'nft', 'vault'].includes(name)) return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round">
+      <path d="m16 3 11 6.5v13L16 29 5 22.5v-13L16 3Z" /><circle cx="16" cy="16" r="5" /><path d="M16 11v10M13 14h5.5M13.5 18h5.5" />
+    </svg>
+  )
+
+  if (name === 'solanaweb3') return (
+    <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+      <path d="M5 7h19l3 4H8L5 7ZM5 14h19l3 4H8l-3-4ZM5 21h19l3 4H8l-3-4Z" />
     </svg>
   )
 

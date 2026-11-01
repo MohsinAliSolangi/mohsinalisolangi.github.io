@@ -1,7 +1,9 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import portrait from '../../assets/mohsin-portrait-halftone-v2.webp'
+import portrait480 from '../../assets/mohsin-portrait-halftone-480.webp'
+import portrait640 from '../../assets/mohsin-portrait-halftone-640.webp'
+import portrait900 from '../../assets/mohsin-portrait-halftone-900.webp'
 import { scrollTo as smoothScrollTo } from '../../lib/lenis'
 import SocialIcon from '../SocialIcon/SocialIcon'
 import styles from './Hero.module.css'
@@ -19,6 +21,8 @@ const SOCIALS = [
   { name: 'upwork', label: 'Upwork', href: 'https://www.upwork.com/freelancers/~011ce6368cb2570ed4' },
   { name: 'github', label: 'GitHub', href: 'https://github.com/MohsinAliSolangi' },
   { name: 'freelancer', label: 'Freelancer', href: 'https://www.freelancer.com/u/Mohsinalisolang2' },
+  { name: 'telegram', label: 'Telegram', href: 'https://t.me/mohsinalisolangi' },
+  { name: 'discord', label: 'Discord: @mohsinalisolangi', href: 'https://discord.com/app' },
   { name: 'email', label: 'Email', href: 'mailto:mohsinali.solangi789@gmail.com' },
 ]
 
@@ -98,7 +102,17 @@ export default function Hero() {
         </div>
         <div ref={portraitRef} className={styles.portraitWrap}>
           <span className={styles.photoIndex}>HALFTONE / 001</span>
-          <img ref={portraitImageRef} src={portrait} alt="Mohsin Ali Solangi, blockchain developer and lecturer" className={styles.portrait} />
+          <img
+            ref={portraitImageRef}
+            src={portrait640}
+            srcSet={`${portrait480} 480w, ${portrait640} 640w, ${portrait900} 900w`}
+            sizes="(max-width: 760px) 84vw, (max-width: 1100px) 45vw, 585px"
+            width="640"
+            height="879"
+            fetchPriority="high"
+            alt="Mohsin Ali Solangi, blockchain developer and lecturer"
+            className={styles.portrait}
+          />
           <span className={styles.imageCaption}>A human perspective on Web3</span>
         </div>
       </div>
@@ -120,8 +134,8 @@ export default function Hero() {
         </p>
         <div className={styles.actionRow}>
           <div className={styles.actions}>
-            <a href="#contact" className={styles.primary} onClick={event => { event.preventDefault(); smoothScrollTo('#contact') }}>
-              Discuss your project <span>↗</span>
+            <a href="/free-blockchain-consultation/" className={styles.primary}>
+              Free blockchain consultation <span>↗</span>
             </a>
             <a href="#projects" className={styles.secondary} onClick={event => { event.preventDefault(); smoothScrollTo('#projects') }}>
               See selected work

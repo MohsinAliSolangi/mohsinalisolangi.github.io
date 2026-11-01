@@ -5,11 +5,11 @@
 .title { font: 550 clamp(2.5rem, 5.8vw, 5.5rem)/.98 var(--font-display); letter-spacing: -.055em; }.muted { color: var(--muted); font-weight: 400; }
 .intro { padding-bottom: .35rem; color: var(--muted); font-size: 14px; line-height: 1.75; }
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 4rem; border: 1px solid var(--border); background: var(--border); }
-.card { min-width: 0; padding: 1.6rem; background: var(--bg-soft); transition: background .25s; }.card:hover { background: var(--panel); }
+.card { min-width: 0; padding: 1.6rem; background: var(--bg-soft); transition: background .25s, transform .25s; }.card:hover { position: relative; z-index: 1; background: var(--panel); box-shadow: 0 18px 50px rgba(0,0,0,.22); }
 .cardTop { display: grid; grid-template-columns: 2rem 1fr; gap: .6rem; min-height: 112px; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
 .num { padding-top: .28rem; color: var(--dim); font: 9px var(--font-mono); }.card h3 { color: var(--white); font: 500 22px var(--font-display); letter-spacing: -.025em; }.cardTop p { max-width: 320px; margin-top: .45rem; color: var(--muted); font-size: 12px; line-height: 1.6; }
 .items { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin-top: 1.35rem; }
-.tech { display: flex; min-width: 0; align-items: center; gap: .65rem; padding: .65rem; border: 1px solid var(--border); color: var(--silver); font: 9px var(--font-mono); letter-spacing: .04em; transition: .2s; }.tech:hover { border-color: var(--border-strong); background: rgba(255,255,255,.035); color: var(--white); transform: translateY(-2px); }
+.tech { display: flex; min-width: 0; min-height: 51px; align-items: center; gap: .65rem; padding: .65rem; border: 1px solid var(--border); color: var(--silver); font: 9px var(--font-mono); letter-spacing: .04em; line-height: 1.35; transition: .2s; }.tech:hover { border-color: var(--border-strong); background: rgba(255,255,255,.035); color: var(--white); transform: translateY(-2px); }
 .icon { display: grid; width: 28px; height: 28px; flex: 0 0 28px; place-items: center; border-radius: 7px; background: rgba(255,255,255,.055); color: #d9d9d6; }.icon svg { width: 18px; height: 18px; }
 @media (max-width: 1050px) { .grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 760px) { .section { padding: 5rem 1.25rem; }.headingRow { grid-template-columns: 1fr; gap: 1.5rem; }.grid { grid-template-columns: 1fr; margin-top: 3rem; }.cardTop { min-height: 0; }.items { grid-template-columns: 1fr 1fr; } }

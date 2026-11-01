@@ -31,9 +31,8 @@
     <meta name="twitter:title" content="Blockchain Developer Pakistan | Mohsin Ali Solangi" />
     <meta name="twitter:description" content="Smart contract, dApp, DeFi, Solana and token development by a Pakistan-based Web3 engineer." />
     <meta name="twitter:image" content="https://mohsinalisolangi.me/mohsin-ali-solangi-blockchain-developer.jpg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4C_k3HqU.woff2" as="font" type="font/woff2" crossorigin />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -46,7 +45,12 @@
           "alternateName": ["M. Solangi", "MrS Web3"],
           "description": "Portfolio and services of Mohsin Ali Solangi, a Pakistan-based blockchain developer, Web3 solution designer and lecturer.",
           "inLanguage": "en-PK",
-          "publisher": { "@id": "https://mohsinalisolangi.me/#person" }
+          "publisher": { "@id": "https://mohsinalisolangi.me/#person" },
+          "potentialAction": {
+            "@type": "ContactAction",
+            "name": "Request a free blockchain consultation",
+            "target": "https://mohsinalisolangi.me/free-blockchain-consultation/"
+          }
         },
         {
           "@type": "WebPage",
@@ -76,25 +80,34 @@
           "url": "https://mohsinalisolangi.me/",
           "image": { "@id": "https://mohsinalisolangi.me/#profile-image" },
           "email": "mailto:mohsinali.solangi789@gmail.com",
+          "contactPoint": [{
+            "@type": "ContactPoint",
+            "contactType": "Blockchain project enquiries",
+            "email": "mohsinali.solangi789@gmail.com",
+            "url": "https://mohsinalisolangi.me/free-blockchain-consultation/",
+            "availableLanguage": ["English", "Urdu"]
+          }],
           "jobTitle": "Blockchain Developer, Web3 Solution Designer and Lecturer",
           "description": "Pakistan-based blockchain developer with more than four years of experience building Solidity smart contracts, decentralized applications, DeFi products, token platforms and Solana programs.",
           "nationality": { "@type": "Country", "name": "Pakistan" },
           "homeLocation": { "@type": "Country", "name": "Pakistan" },
           "knowsLanguage": ["English", "Urdu"],
+          "identifier": [{ "@type": "PropertyValue", "propertyID": "Discord", "value": "mohsinalisolangi" }],
           "knowsAbout": [
-            "Blockchain development", "Web3 development", "Smart contract development", "Solidity", "Rust", "Ethereum", "EVM", "Solana", "Anchor Framework", "Decentralized applications", "DeFi development", "Token development", "ICO and IDO platforms", "Staking platforms", "Web3 security", "Cybersecurity", "Solution architecture", "React.js", "Node.js", "AWS KMS"
+            "Blockchain development", "Web3 development", "Smart contract development", "Solidity", "Rust", "Ethereum", "EVM", "Solana", "Anchor Framework", "Hardhat", "Foundry", "Solana Web3.js", "Reown AppKit", "MetaMask", "Thirdweb", "IPFS", "Pinata", "Infura", "Alchemy", "Moralis", "ERC-20", "ERC-721", "ERC-1155", "ERC-4626", "SPL Token", "BEP-20", "Decentralized applications", "DeFi development", "Token development", "Web3 security", "Cybersecurity", "Solution architecture", "React.js", "Next.js", "TypeScript", "Node.js", "Express.js", "Mongoose", "MySQL", "PostgreSQL", "Supabase", "AWS KMS"
           ],
           "hasOccupation": {
             "@type": "Occupation",
             "name": "Blockchain Developer",
             "occupationLocation": { "@type": "Country", "name": "Pakistan" },
-            "skills": "Solidity, Rust, Solana, EVM smart contracts, dApps, DeFi, token launches, React.js, Node.js, AWS and security-minded Web3 engineering"
+            "skills": "Solidity, Rust, TypeScript, Solana, EVM smart contracts, dApps, DeFi, token standards, Hardhat, Foundry, React.js, Next.js, Node.js, Express.js, SQL databases, Supabase, decentralized storage, RPC infrastructure, AWS and security-minded Web3 engineering"
           },
           "sameAs": [
             "https://www.linkedin.com/in/mohsinalisolangi",
             "https://github.com/MohsinAliSolangi",
             "https://www.freelancer.com/u/Mohsinalisolang2",
             "https://www.upwork.com/freelancers/~011ce6368cb2570ed4",
+            "https://t.me/mohsinalisolangi",
             "https://mohsinagency.vercel.app/"
           ],
           "makesOffer": { "@id": "https://mohsinalisolangi.me/#services" }
@@ -104,6 +117,7 @@
           "@id": "https://mohsinalisolangi.me/#services",
           "name": "Blockchain and Web3 Development Services",
           "itemListElement": [
+            { "@type": "Offer", "price": "0", "priceCurrency": "USD", "itemOffered": { "@type": "Service", "name": "Free Blockchain Consultation", "url": "https://mohsinalisolangi.me/free-blockchain-consultation/", "areaServed": ["Pakistan", "Worldwide"] } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Smart Contract Development", "url": "https://mohsinalisolangi.me/services/smart-contract-development/", "areaServed": ["Pakistan", "Worldwide"] } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web3 dApp Development", "url": "https://mohsinalisolangi.me/services/web3-dapp-development/", "areaServed": ["Pakistan", "Worldwide"] } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DeFi and Token Development", "url": "https://mohsinalisolangi.me/services/defi-token-development/", "areaServed": ["Pakistan", "Worldwide"] } },
@@ -228,12 +242,13 @@
         { "@type": "Question", "name": "Can Mohsin build and integrate Solidity smart contracts?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Mohsin builds custom Solidity contracts for ERC-20 tokens, NFTs, staking, vesting, governance, presales, referral systems, swaps, and protocol-specific logic, then integrates them into wallet-connected web applications." } },
         { "@type": "Question", "name": "Does Mohsin work with Ethereum, EVM chains, and Solana?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. His work covers Ethereum and EVM-compatible networks including Polygon, BNB Chain, Arbitrum, Base, Optimism, and Avalanche, plus Solana programs developed with Rust and the Anchor framework." } },
         { "@type": "Question", "name": "Does Mohsin work with international Web3 clients?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Mohsin is based in Pakistan and works remotely with founders, agencies, and product teams worldwide." } },
-        { "@type": "Question", "name": "Can Mohsin help improve smart contract security?", "acceptedAnswer": { "@type": "Answer", "text": "Mohsin applies security-minded engineering by reviewing permissions, trust boundaries, contract interactions, key management, and common vulnerability patterns. For high-value production protocols, an independent formal audit is recommended before launch." } }
+        { "@type": "Question", "name": "Can Mohsin help improve smart contract security?", "acceptedAnswer": { "@type": "Answer", "text": "Mohsin applies security-minded engineering by reviewing permissions, trust boundaries, contract interactions, key management, and common vulnerability patterns. For high-value production protocols, an independent formal audit is recommended before launch." } },
+        { "@type": "Question", "name": "Does Mohsin offer a free blockchain consultation?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Founders, agencies, and product teams can request a free initial blockchain consultation to discuss their idea, current blocker, technical direction, and a practical next step." } }
       ]
     }
     </script>
-    <script type="module" crossorigin src="/assets/index-sAsggHOk.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-PbHZS0-K.css">
+    <script type="module" crossorigin src="/assets/index-C3ivt8f9.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B5TioWDZ.css">
   </head>
   <body>
     <div id="root"></div>
