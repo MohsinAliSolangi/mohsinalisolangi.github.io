@@ -1,3 +1,5 @@
+'use client'
+
 export default function SocialIcon({ name, className }) {
   const common = { viewBox: '0 0 24 24', className, 'aria-hidden': true }
 

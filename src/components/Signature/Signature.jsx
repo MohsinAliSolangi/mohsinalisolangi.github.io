@@ -1,5 +1,7 @@
-import useSectionAnimation from '../../lib/useSectionAnimation'
-import NetworkGlyph from '../NetworkGlyph/NetworkGlyph'
+'use client'
+
+import useSectionAnimation from '@/lib/useSectionAnimation'
+import NetworkGlyph from '@/components/NetworkGlyph/NetworkGlyph'
 import styles from './Signature.module.css'
 
 const PRINCIPLES = [

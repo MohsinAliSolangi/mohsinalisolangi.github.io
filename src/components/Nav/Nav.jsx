@@ -1,9 +1,11 @@
+'use client'
+
 import { useState, useEffect, useRef } from 'react'
-import CoinLogo from '../CoinLogo/CoinLogo'
-import { scrollTo as smoothScrollTo } from '../../lib/lenis'
+import CoinLogo from '@/components/CoinLogo/CoinLogo'
+import { scrollTo as smoothScrollTo } from '@/lib/lenis'
 import styles from './Nav.module.css'
 
-const links = ['About', 'Stack', 'Services', 'Projects', 'Contact']
+const links = ['About', 'Stack', 'Services', 'Projects', 'Products', 'Contact']
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -42,10 +44,7 @@ export default function Nav() {
         ))}
       </ul>
 
-      <a
-        href="/free-blockchain-consultation/"
-        className={styles.cta}
-      >
+      <a href="/free-blockchain-consultation/" className={styles.cta}>
         Free Consultation
       </a>
 

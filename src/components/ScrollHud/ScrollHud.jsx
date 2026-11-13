@@ -1,5 +1,7 @@
+'use client'
+
 import { useEffect, useRef, useState } from 'react'
-import { scrollTo as smoothScrollTo } from '../../lib/lenis'
+import { scrollTo as smoothScrollTo } from '@/lib/lenis'
 import styles from './ScrollHud.module.css'
 
 const SECTIONS = [

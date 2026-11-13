@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './Ticker.module.css'
 
 const ITEMS = [
