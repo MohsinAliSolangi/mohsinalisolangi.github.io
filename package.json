@@ -1,22 +1,23 @@
 {
-  "name": "mohsin-portfolio",
+  "name": "portfolio-by-ai-next",
+  "version": "0.1.0",
   "private": true,
-  "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
-    "gsap": "^3.15.0",
-    "lenis": "^1.3.26",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "three": "^0.185.1"
+    "gsap": "^3.15.1",
+    "lenis": "^1.3.27",
+    "next": "16.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "three": "^0.187.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^5.0.0",
-    "vite": "^8.0.16"
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6"
   }
 }

@@ -1,3 +1,5 @@
+'use client'
+
 export default function TechIcon({ name, label }) {
   const common = { viewBox: '0 0 32 32', 'aria-hidden': true }
 

@@ -1,11 +1,10 @@
+'use client'
+
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import portrait480 from '../../assets/mohsin-portrait-halftone-480.webp'
-import portrait640 from '../../assets/mohsin-portrait-halftone-640.webp'
-import portrait900 from '../../assets/mohsin-portrait-halftone-900.webp'
-import { scrollTo as smoothScrollTo } from '../../lib/lenis'
-import SocialIcon from '../SocialIcon/SocialIcon'
+import { scrollTo as smoothScrollTo } from '@/lib/lenis'
+import SocialIcon from '@/components/SocialIcon/SocialIcon'
 import styles from './Hero.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -36,7 +35,6 @@ export default function Hero() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
       if (reduceMotion) return
 
       gsap.fromTo(
@@ -104,8 +102,8 @@ export default function Hero() {
           <span className={styles.photoIndex}>HALFTONE / 001</span>
           <img
             ref={portraitImageRef}
-            src={portrait640}
-            srcSet={`${portrait480} 480w, ${portrait640} 640w, ${portrait900} 900w`}
+            src="/assets/mohsin-portrait-halftone-640.webp"
+            srcSet="/assets/mohsin-portrait-halftone-480.webp 480w, /assets/mohsin-portrait-halftone-640.webp 640w, /assets/mohsin-portrait-halftone-900.webp 900w"
             sizes="(max-width: 760px) 84vw, (max-width: 1100px) 45vw, 585px"
             width="640"
             height="879"
